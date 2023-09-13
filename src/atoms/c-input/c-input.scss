@@ -1,0 +1,13 @@
+@use '/src/styles/shared.scss';
+
+.Input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: shared.$margin;
+}
+    label {
+        margin-right: shared.$padding;
+        text-transform: capitalize;
+        min-width: 145px;
+        text-align: left;
+    }

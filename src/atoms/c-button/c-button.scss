@@ -1,0 +1,15 @@
+@use '/src/styles/shared.scss';
+
+.button {
+    padding: .2em shared.$padding;
+    font-size: 1em;
+    border: none;
+    min-width: 100px;
+    border-radius: shared.$border-radius;
+    margin: shared.$margin
+}
+.submit {
+    background-color: shared.$secondary-color;
+    color: shared.$secondary-text;
+    font-size: 1em;
+}
