@@ -1,3 +1,5 @@
-const local_api = 'http://localhost:8000'
+const configs = {
+    local_api: 'http://localhost:8000',
+}
 
-export default local_api;
+export default configs;

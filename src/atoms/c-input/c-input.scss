@@ -6,8 +6,31 @@
     margin-bottom: shared.$margin;
 }
     label {
+        display: flex;
+        align-items: center;
+        font-size: 1em;
         margin-right: shared.$padding;
         text-transform: capitalize;
-        min-width: 145px;
+        min-width: 110px;
         text-align: left;
     }
+    input {
+        width: 100%;
+        color: shared.$secondary-text;
+        font-size: .8em;
+        line-height: .9em;
+        min-height: 1em;
+        border-radius: shared.$border-radius;
+        padding: 0.2em shared.$padding;
+        border: 2px solid transparent;
+        background: rgb(251, 251, 251);
+        transition: all 0.1s ease 0s;
+        outline: none;
+    }
+    input:focus {
+        outline: 1px solid shared.$accent-color-0;
+    }
+    
+
+
+    

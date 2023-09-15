@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useContext } from 'react';
+import { redirect } from 'react-router'
 import './login.scss';
 
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
-import local_api from '../../config';
+import configs from '../../config';
 
 class Login extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -16,24 +18,24 @@ class Login extends Component {
 
     loggingIn = () => {
         // Check if user with this pair login/password exists
-        fetch(`${local_api}/users?email=${this.state.email}&password=${this.state.password}`)
+        fetch(`${configs.local_api}/users?email=${this.state.email}&password=${this.state.password}`)
             .then(response => response.json())
             .then(data => {
                 if(data.length > 0) {
                     localStorage.setItem('token', JSON.stringify(new Date()));
+                    const { name } = data[0];
+                    console.log(name)
+                    this.props.grabName(name)
                     window.dispatchEvent(new Event("storage"));
                 }
             })
-        console.log(this.state.email);
     }
 
     handleMailChange = (val) => {
-        console.log('mail', val);
         this.setState({ email: val });
     }
 
     handlePassChange = (val) => {
-        console.log('pass', val);
         this.setState({ password: val });
     }
 
@@ -42,7 +44,7 @@ class Login extends Component {
             <div className="Login">
                 <CInput type="email" func={this.handleMailChange} />
                 <CInput type="password" func={this.handlePassChange} />
-                <CButton innerText="submit" styling="Submit" action={this.loggingIn} />
+                <CButton innerText="Submit" styling="submit" onClick={this.loggingIn} />
             </div>
         );
     }
