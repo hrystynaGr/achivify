@@ -9,6 +9,7 @@ import Dashboard from './organisms/dashboard/dashboard';
 import Configs from './organisms/configs/configs';
 import CButton from './atoms/c-button/c-button';
 import CSwitch from './atoms/c-switch/c-switch';
+import User from './models/User';
 
 class App extends Component {
 
@@ -16,14 +17,24 @@ class App extends Component {
     super(props);
     this.state = {
       userName: localStorage.getItem("userName") || '',
-      theme: localStorage.getItem('theme') || 'dark'
+      theme: localStorage.getItem('theme') || 'dark',
+      user: {},
     };
   }
 
   componentDidMount() {
+    const userIdLocal = localStorage.getItem("userId");
+    const currentUser = new User({userId: userIdLocal})
+    this.setState({user: currentUser})
+    console.log("user", this.state.user.name)
     window.addEventListener('storage', () => {
       window.location.href = '/dashboard';
     });
+  }
+
+  grabId = (id) => {
+    this.setState({ userId: id });
+    localStorage.setItem("userId", id);
   }
 
   grabName = (name) => {
@@ -54,7 +65,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <BrowserRouter>
               <Routes>
-                <Route path="/login" element={<Login grabName={this.grabName} />} />
+                <Route path="/login" element={<Login grabName={this.grabName} grabId={this.grabId}/>} />
                 <Route path="/dashboard" element={<Dashboard name={contextValues.userName} />} />
                 <Route path="/configs" element={<Configs />} />
               </Routes>

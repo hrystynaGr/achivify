@@ -14,6 +14,7 @@ class CSwitch extends Component {
           theme: this.props.theme || '',
         };
       }
+      
 
     componentDidMount = () => {
         this.checkbox = document.getElementById('switcher');

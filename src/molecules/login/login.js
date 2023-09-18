@@ -1,5 +1,6 @@
 import React, { Component, useState, useContext } from 'react';
-import { redirect } from 'react-router'
+//didn'k work, can't figure our why
+// import { redirect } from 'react-router'
 import './login.scss';
 
 import { AchivifyContext } from '../../MyContext';
@@ -24,8 +25,9 @@ class Login extends Component {
             .then(data => {
                 if(data.length > 0) {
                     localStorage.setItem('token', JSON.stringify(new Date()));
-                    const { name } = data[0];
+                    const { name, id } = data[0];
                     this.props.grabName(name)
+                    this.props.grabId(id)
                     window.dispatchEvent(new Event("storage"));
                 }
             })

@@ -5,42 +5,42 @@
             "name": "Flower Tulip",
             "email": "1",
             "password": "1",
-            "night": true
+            "theme": "light"
         },
         {
             "id": 1,
             "name": "John Smith",
             "email": "john.smith@example.com",
             "password": "password1",
-            "night": true
+            "theme": "light"
         },
         {
             "id": 2,
             "name": "Emily Johnson",
             "email": "emily.johnson@example.com",
             "password": "password2",
-            "night": false
+            "theme": "dark"
         },
         {
             "id": 3,
             "name": "Michael Davis",
             "email": "michael.davis@example.com",
             "password": "password3",
-            "night": true
+            "theme": "light"
         },
         {
             "id": 4,
             "name": "Sarah Brown",
             "email": "sarah.brown@example.com",
             "password": "password4",
-            "night": false
+            "theme": "dark"
         },
         {
             "id": 5,
             "name": "David Wilson",
             "email": "david.wilson@example.com",
             "password": "password5",
-            "night": true
+            "theme": "light"
         }
     ],
     "categories": [
