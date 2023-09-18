@@ -1,17 +1,35 @@
-$primary-color: #384D48;
-$primary-color-hue: #6E7271;
-$secondary-color: #ACAD94;
-$secondary-color-hue: #fff;
-$accent-color-0: #EE6C4D;
-$accent-color-1: #310D20;
+:root {
+    --padding: .5em;
+    --margin: 1em;
+    --border-radius: 5px;
+}
 
-$primary-text: #fff;
-$primary-text-hue: #fff;
-$secondary-text: #232423;
-$accent-text-0: #232423;
-$accent-text-1: #fff;
+[theme='light'] {
+    --primary-color: lightpink;
+    --primary-color-hue: yellow;
+    --secondary-color: blue;
+    --secondary-color-hue: white;
+    --accent-color-0: lightgreen;
+    --accent-color-1: magenta;
 
-$padding: .5em;
-$margin: 1em;
+    --primary-text: #fff;
+    --primary-text-hue: #fff;
+    --secondary-text: #232423;
+    --accent-text-0: #232423;
+    --accent-text-1: #ff
+}
 
-$border-radius: 5px;
+[theme='dark'] {
+    --primary-color: #384D48;
+    --primary-color-hue: #6E7271;
+    --secondary-color: #ACAD94;
+    --secondary-color-hue: #fff;
+    --accent-color-0: #EE6C4D;
+    --accent-color-1: #310D20;
+
+    --primary-text: #fff;
+    --primary-text-hue: #fff;
+    --secondary-text: #232423;
+    --accent-text-0: #232423;
+    --accent-text-1: #fff;
+}

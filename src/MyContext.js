@@ -1,3 +1,6 @@
 import { createContext } from 'react';
 
-export const UserNameContext = createContext('stranger')
+export const AchivifyContext = createContext({
+    name: 'Stranger',
+    theme: 'dark',
+  });

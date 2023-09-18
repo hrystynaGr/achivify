@@ -2,6 +2,7 @@ import React, { Component, useState, useContext } from 'react';
 import { redirect } from 'react-router'
 import './login.scss';
 
+import { AchivifyContext } from '../../MyContext';
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
 import configs from '../../config';
@@ -24,7 +25,6 @@ class Login extends Component {
                 if(data.length > 0) {
                     localStorage.setItem('token', JSON.stringify(new Date()));
                     const { name } = data[0];
-                    console.log(name)
                     this.props.grabName(name)
                     window.dispatchEvent(new Event("storage"));
                 }
@@ -41,7 +41,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="Login">
+            <div className="Login" theme={this.context.theme}>
                 <CInput type="email" func={this.handleMailChange} />
                 <CInput type="password" func={this.handlePassChange} />
                 <CButton innerText="Submit" styling="submit" onClick={this.loggingIn} />
@@ -49,5 +49,7 @@ class Login extends Component {
         );
     }
 }
+
+Login.contextType = AchivifyContext;
 
 export default Login;

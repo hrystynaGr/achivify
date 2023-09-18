@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './c-input.scss';
+import { AchivifyContext } from '../../MyContext';
 
 class CInput extends Component {
     constructor(props) {
@@ -12,8 +13,6 @@ class CInput extends Component {
     handleChange = (event) => {
         const newValue = event.target.value;
         this.setState({ message: newValue });
-        console.log('value is:', newValue);
-
         // Pass the updated value to the parent component's function
         this.props.func(newValue);
     };
@@ -21,7 +20,7 @@ class CInput extends Component {
     render() {
         return (
             <div className="Input">
-                <label>{this.props.type}</label>
+                <label className='label' theme={this.context.theme}>{this.props.type}</label>
                 <input
                     type={this.props.type}
                     id={this.props.type}
@@ -33,5 +32,7 @@ class CInput extends Component {
         );
     }
 }
+
+CInput.contextType = AchivifyContext;
 
 export default CInput;
