@@ -1,12 +1,12 @@
-import React, { Component, useState, useContext } from 'react';
+import React, { Component } from 'react';
 //didn'k work, can't figure our why
 // import { redirect } from 'react-router'
-import './login.scss';
 
+import './login.scss';
 import { AchivifyContext } from '../../MyContext';
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
-import configs from '../../config';
+import { logIn } from '../../helpers/user';
 
 class Login extends Component {
     
@@ -19,18 +19,7 @@ class Login extends Component {
     }
 
     loggingIn = () => {
-        // Check if user with this pair login/password exists
-        fetch(`${configs.local_api}/users?email=${this.state.email}&password=${this.state.password}`)
-            .then(response => response.json())
-            .then(data => {
-                if(data.length > 0) {
-                    localStorage.setItem('token', JSON.stringify(new Date()));
-                    const { name, id } = data[0];
-                    this.props.grabName(name)
-                    this.props.grabId(id)
-                    window.dispatchEvent(new Event("storage"));
-                }
-            })
+        logIn(this);
     }
 
     handleMailChange = (val) => {

@@ -5,42 +5,31 @@ class User extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            data: {},
-        }
         this.userId = props.userId;
-    }
-
-    componentDidMount() {
-        this.fetchData();
+        this.data = {};
     }
 
     async fetchData() {
         try {
             const response = await fetch(`${configs.local_api}/users?id=${this.userId}`);
             const userData = await response.json();
-            this.setState({data: userData[0]})
+            this.data = userData[0];
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
     }
 
     get name() {
-        return this.state.data.name
+        return this.data.name
     }
 
     get mail() {
-        return this.state.data.mail
+        return this.data.email
     }
 
     get theme() {
-        return this.state.data.theme
+        return this.data.theme
     }
-
-    render() {
-        // Since you don't want this component to appear in the DOM, return null
-        return (<h4>hiiiiiii</h4>);
-      }
 
 }
 

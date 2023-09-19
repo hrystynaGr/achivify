@@ -4,21 +4,9 @@ import './c-switch.scss';
 
 class CSwitch extends Component {
 
-    constructor(props) {
-        super(props);
-        const [value_one, value_two] = this.props.values
-        this.state = {
-          key: this.props.keyName || '',
-          value_one: value_one || '',
-          value_two: value_two || '',
-          theme: this.props.theme || '',
-        };
-      }
-      
-
     componentDidMount = () => {
         this.checkbox = document.getElementById('switcher');
-        if(this.state.theme === this.state.value_one) {
+        if(this.context.theme === this.props.values[0]) {
             this.checkbox.setAttribute('checked', true)
         }
         else {
@@ -27,15 +15,16 @@ class CSwitch extends Component {
     }
 
     checkToggle = () => {
+        const [value_one, value_two] = this.props.values
         if (this.checkbox.checked) {
-            this.props.grabTheme(this.state.value_one)
+            this.props.grabTheme(value_one)
         } else {
-            this.props.grabTheme(this.state.value_two)
+            this.props.grabTheme(value_two)
         }
     }
 
     isChecked = () => {
-        if (localStorage.getItem(this.state.key) === this.state.value_one) {
+        if (localStorage.getItem(this.props.keyName) === this.props.values[0]) {
             this.checkbox.setAttribute('checked', true)
         } else {
             this.checkbox.removeAttribute('checked')
