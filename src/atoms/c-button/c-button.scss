@@ -18,6 +18,7 @@
         background: var(--accent-color-0);
         line-height: 1.15;
         font-size: 1em;
+        text-transform: capitalize;
         min-width: 100px;
         min-height: 1.7em;
         margin: var(--margin);
@@ -27,7 +28,8 @@
         transition: all .1s ease;
         box-shadow: 0 0 0 0 var(--secondary-color-hue, 0 0 0 3px white);
     }
-    .logout-inner {
+    .logout-inner,
+    .signin-inner {
         background: var(--primary-color);
         border: 1px solid var(--secondary-color-hue);
         color: var(--secondary-color-hue);

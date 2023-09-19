@@ -21,7 +21,7 @@ export const logIn = async (componentInstance) => {
             if (data.length > 0) {
                 localStorage.setItem('token', JSON.stringify(new Date()));
                 const { id } = data[0];
-                componentInstance.props.grabId(id);
+                localStorage.setItem("userId", id);
                 window.dispatchEvent(new Event("storage"));
             }
         })
@@ -30,4 +30,34 @@ export const logIn = async (componentInstance) => {
 export const isLoggedIn = async (componentInstance) => {
     const isLoggedIn = !!localStorage.getItem('token')
     componentInstance.setState({ isLoggedIn: isLoggedIn });
+}
+
+export const signIn = async (componentInstance) => {
+    const data = {
+        name: componentInstance.state.name,
+        email: componentInstance.state.email,
+        theme: 'dark',
+        password: componentInstance.state.password,
+    };
+
+    fetch(`${configs.local_api}/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            logIn(componentInstance);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
 }
