@@ -9,6 +9,7 @@ import { userMilestones } from '../../helpers/user';
 // modify  them
 //button to send them
 //fix how checkboxes look
+//check if mails was added
 class Configs extends Component {
 
     constructor(props) {
