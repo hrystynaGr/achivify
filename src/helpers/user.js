@@ -61,3 +61,11 @@ export const signIn = async (componentInstance) => {
         });
 
 }
+
+export const userMilestones = async (userId) => {
+    return await fetch(`${configs.local_api}/userMilestones?userid=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            return data;
+        })
+}

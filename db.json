@@ -71,7 +71,7 @@
       "id": 204
     }
   ],
-  "categories": [
+  "milestones": [
     {
       "categoryid": 101,
       "categoryname": "CodeCraftPro",
@@ -115,10 +115,10 @@
       "timeneeded": 330
     }
   ],
-  "usersCategories": [
+  "usersMilestones": [
     {
       "userid": 1,
-      "allcategories": [
+      "milestones": [
         101,
         103,
         105
@@ -126,14 +126,14 @@
     },
     {
       "userid": 2,
-      "allcategories": [
+      "milestones": [
         102,
         104
       ]
     },
     {
       "userid": 3,
-      "allcategories": [
+      "milestones": [
         101,
         102,
         103,
@@ -143,11 +143,11 @@
     },
     {
       "userid": 4,
-      "allcategories": []
+      "milestones": []
     },
     {
       "userid": 5,
-      "allcategories": [
+      "milestones": [
         101,
         103,
         105

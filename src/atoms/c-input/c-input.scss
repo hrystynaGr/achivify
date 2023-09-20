@@ -1,36 +1,53 @@
 @import '/src/styles/shared.scss';
 
-.Input {
+.CInput {
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--margin);
 }
-    label.label {
-        display: flex;
-        align-items: center;
-        font-size: 1em;
-        margin-right: var(--padding);
-        text-transform: capitalize;
-        min-width: 110px;
-        text-align: left;
-    }
-    input {
-        width: 100%;
-        color: var(--secondary-text);
-        font-size: .8em;
-        line-height: .9em;
-        min-height: 1em;
-        border-radius: var(--border-radius);
-        padding: 0.2em var(--padding);
-        border: 2px solid transparent;
-        background: rgb(251, 251, 251);
-        transition: all 0.1s ease 0s;
-        outline: none;
-    }
-    input:focus {
-        outline: 1px solid var(--accent-color-0);
-    }
-    
 
+label.label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    margin-right: var(--padding);
+    text-transform: capitalize;
+    min-width: 110px;
+    text-align: left;
+    color: var(--primary-text);
+}
 
-    
+label.label.checkbox {
+    min-width: fit-content;
+}
+
+input {
+    width: 100%;
+    color: var(--secondary-text);
+    font-size: .8em;
+    line-height: .9em;
+    min-height: 1em;
+    border-radius: var(--border-radius);
+    padding: 0.2em var(--padding);
+    border: 2px solid transparent;
+    background: rgb(251, 251, 251);
+    transition: all 0.1s ease 0s;
+    outline: none;
+}
+
+input:focus {
+    outline: 1px solid var(--accent-color-0);
+}
+
+input[type='checkbox'] {
+    display: inline-flex;
+    align-self: center;
+    accent-color: var(--accent-color-0);
+    width: fit-content;
+    height: 1em;
+    width: 1em;
+}
+
+input[type='checkbox']:focus {
+    outline: none;
+}

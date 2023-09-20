@@ -19,8 +19,8 @@ class CInput extends Component {
 
     render() {
         return (
-            <div className="Input">
-                <label className='label' theme={this.context.theme}>{this.props.type}</label>
+            <div className="CInput">
+                <label className={`label ${this.props.type}`} theme={this.context.theme}>{this.props.label || this.props.type}</label>
                 <input
                     type={this.props.type}
                     id={this.props.type}

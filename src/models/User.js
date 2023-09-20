@@ -5,13 +5,12 @@ class User extends Component {
 
     constructor(props) {
         super(props);
-        this.userId = props.userId;
         this.data = {};
     }
 
     async fetchData() {
         try {
-            const response = await fetch(`${configs.local_api}/users?id=${this.userId}`);
+            const response = await fetch(`${configs.local_api}/users?id=${this.props.userId}`);
             const userData = await response.json();
             this.data = userData[0];
         } catch (error) {

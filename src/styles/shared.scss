@@ -2,6 +2,7 @@
     --padding: .5em;
     --margin: 1em;
     --border-radius: 5px;
+    // --border-thik: 2px solid var(--secondary-color-hue);
 }
 
 [theme='light'] {
@@ -16,7 +17,8 @@
     --primary-text-hue: #fff;
     --secondary-text: #232423;
     --accent-text-0: #232423;
-    --accent-text-1: #ff
+    --accent-text-1: #fff;
+    --border-thin: 1px solid var(--primary-color-hue);
 }
 
 [theme='dark'] {
@@ -32,4 +34,5 @@
     --secondary-text: #232423;
     --accent-text-0: #232423;
     --accent-text-1: #fff;
+    --border-thin: 1px solid var(--primary-color-hue);
 }

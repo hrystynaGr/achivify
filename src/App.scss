@@ -17,12 +17,21 @@
   .CButton.logout {
     justify-content: flex-end;
   }
+  .topBar .svg-icon {
+    font-size: 1.5em ;
+    animation: none;
+    margin: var(--margin);
+    margin-left: 0;
+    cursor: pointer;
+    pointer-events: auto;
+  }
 
 
 .App-logo {
-  height: 20vmin;
+  font-size: 20vmin;
   pointer-events: none;
-  margin-bottom: 2em;
+  margin-bottom: .2em;
+  color: var(--accent-color-0)
 }
 
 @media (prefers-reduced-motion: no-preference) {

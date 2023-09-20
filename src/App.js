@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './cogwheel.png';
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import { ReactComponent as GearSVG} from './gear.svg'
 import { AchivifyContext } from './MyContext';
 import Login from './molecules/login/login';
 import Dashboard from './organisms/dashboard/dashboard';
@@ -51,14 +51,18 @@ class App extends Component {
   }
 
   render() {
-    let button;
+    let button, gear, topGear;
     const contextValues = this.state;
     if (pageName() === 'login' || pageName() === 'signin') {
-      const currpageName = pageName() === 'login'? 'signin' : 'login';
+      const currpageName = pageName() === 'login' ? 'signin' : 'login';
       button = <CButton onClick={this[currpageName]} styling={currpageName} innerText={currpageName} />
+      gear = <GearSVG/>
+      topGear = <GearSVG/>
     }
     else if (this.state.isLoggedIn) {
       button = <CButton onClick={this.logout} styling="logout" innerText="logout" />
+      gear = null;
+      topGear = <GearSVG/>;
     }
     else {
       button =
@@ -66,16 +70,23 @@ class App extends Component {
           <CButton onClick={this.login} styling="login" innerText="login" />
           <CButton onClick={this.signin} styling="signin" innerText="signin" />
         </div>
+      gear = null;
+      topGear = <GearSVG/>;
     }
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={contextValues.theme}>
           <div className='topBar'>
-            <CSwitch keyName='theme' values={['light', 'dark']} grabTheme={this.grabTheme} />
+            <div>
+              <CSwitch keyName='theme' values={['light', 'dark']} grabTheme={this.grabTheme} />
+              <a href="/configs">
+                {topGear}
+              </a>
+            </div>
             {button}
           </div>
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            {gear}
             <BrowserRouter>
               <Routes>
                 <Route path="/login" element={<Login />} />
