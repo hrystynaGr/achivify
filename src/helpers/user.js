@@ -63,9 +63,35 @@ export const signIn = async (componentInstance) => {
 }
 
 export const userMilestones = async (userId) => {
-    return await fetch(`${configs.local_api}/userMilestones?userid=${userId}`)
+    return await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`)
         .then(response => response.json())
         .then(data => {
-            return data;
+            return data[0];
         })
 }
+
+export const changeUserMilestones = async (componentInstance) => {
+    const data = {
+        // id: componentInstance?.userMilestonesId,
+        userid: componentInstance?.context?.user?.id,
+        milestones: componentInstance?.state?.usermilestones
+    };
+    fetch(`${configs.local_api}/usersMilestones/${componentInstance?.userMilestonesId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+

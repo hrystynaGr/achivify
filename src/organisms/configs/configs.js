@@ -3,7 +3,7 @@ import './configs.scss'
 import { AchivifyContext } from '../../MyContext';
 import { milestonesLoad } from '../../helpers/milestones';
 import CInput from '../../atoms/c-input/c-input';
-import { userMilestones } from '../../helpers/user';
+import { userMilestones, changeUserMilestones } from '../../helpers/user';
 
 //loadUsermilestones
 // modify  them
@@ -14,27 +14,63 @@ class Configs extends Component {
 
     constructor(props) {
         super(props);
+        //hack because lacking of proper database
+        this.userMilestonesId = 0;
         this.state = {
-            milestones: {}
+            milestones: {},
+            usermilestones: {},
         }
     }
 
-    componentDidMount() {
-        const milestones = milestonesLoad(this);
-        const usermilestones = userMilestones(this.context.user.id);
+    async componentDidMount() {
+        const milestones = await milestonesLoad(this);
+        const usermilestones = await userMilestones(this.context.user.id);
+        this.setState({ usermilestones: usermilestones.milestones });
+        this.userMilestonesId = usermilestones.id;
+        this.checkboxesState();
     }
 
-    handleCeckbox = (val) => {
-        this.setState({ email: val });
+
+
+    isChecked(milestoneId) {
+        const userMilestonesArray = Array.from(this.state.usermilestones);
+        return userMilestonesArray.includes(+milestoneId);
     }
 
+    checkboxesState = () => {
+        const checkboxes = document.querySelectorAll('.checkbox');
+        checkboxes.forEach((element) => {
+            const id = element.getAttribute('id');
+            const checked = element.getAttribute('checked');
+            if (this.isChecked(id)) {
+                element.setAttribute('checked', 'checked');
+            }
+            else if (checked) {
+                element.removeAttribute('checked');
+            }
+        })
+    }
 
+    onClick = (event) => {
+        if (event.target.checked) {
+            this.state.usermilestones.push(+event.target.id)
+            this.setState({ usermilestones: this.state.usermilestones })
+        }
+        else {
+            const filteredUserMilestones = this.state.usermilestones.filter((elem) => elem != event.target.id)
+            this.setState({ usermilestones: filteredUserMilestones })
+        }
+        //send only update and correct state information
+        setTimeout(() => {
+            changeUserMilestones(this);
+        }, 300)
+        
+    }
 
     render() {
         const milestones = this.state?.milestones;
 
         if (!milestones || !milestones[0]) {
-            // Handle the case where milestones or milestones[0] is undefined or null
             return null; // or display an appropriate message
         }
 
@@ -46,7 +82,13 @@ class Configs extends Component {
                     {
                         Object.values(milestones).map((milestone) => {
                             return (
-                                <CInput type={'checkbox'} func={this.handleCeckbox} label={milestone.categoryname} />
+                                <CInput
+                                    key={milestone.name}
+                                    type={'checkbox'}
+                                    label={milestone.name}
+                                    id={milestone.id}
+                                    func={this.onClick}
+                                />
                             )
                         })
                     }

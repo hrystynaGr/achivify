@@ -7,7 +7,7 @@ class CSwitch extends Component {
     componentDidMount = () => {
         this.checkbox = document.getElementById('switcher');
         if(this.context.theme === this.props.values[0]) {
-            this.checkbox.setAttribute('checked', true)
+            this.checkbox.setAttribute('checked', 'checked')
         }
         else {
             this.checkbox.removeAttribute('checked')
