@@ -1,47 +1,38 @@
-import { Component } from "react";
-
-import { signIn } from "../../helpers/user";
+import React, { useState } from 'react';
+import { signIn } from '../../helpers/user';
 import './sign-in.scss';
+import CInput from '../../atoms/c-input/c-input';
+import CButton from '../../atoms/c-button/c-button';
 
-import CInput from "../../atoms/c-input/c-input";
-import CButton from "../../atoms/c-button/c-button";
+function SignIn() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-class SignIn extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            password: '',
-            email: '',
-        }
-    }
+  const handleNameChange = (val) => {
+    setName(val);
+  };
 
-    handleMailChange = (val) => {
-        this.setState({ email: val });
-    }
+  const handleMailChange = (val) => {
+    setEmail(val);
+  };
 
-    handlePassChange = (val) => {
-        this.setState({ password: val });
-    }
+  const handlePassChange = (val) => {
+    setPassword(val);
+  };
 
-    handleNameChange = (val) => {
-        this.setState({ name: val });
-    }
+  const handleSignIn = () => {
+    signIn({state: { name, email, password }});
+  };
 
-    signIn = () => {
-        signIn(this);
-    }
-
-    render() {
-        return (
-            <div className="signIn">
-                <CInput type="name" func={this.handleNameChange} />
-                <CInput type="email" func={this.handleMailChange} />
-                <CInput type="password" func={this.handlePassChange} />
-                <CButton innerText="Submit" styling="submit" onClick={this.signIn} />
-            </div>
-        )
-    }
+  return (
+    <div className="signIn">
+      <CInput type="name" func={handleNameChange} />
+      <CInput type="email" func={handleMailChange} />
+      <CInput type="password" func={handlePassChange} />
+      <CButton innerText="Submit" styling="submit" onClick={handleSignIn} />
+    </div>
+  );
 }
 
 export default SignIn;

@@ -69,6 +69,13 @@
       "theme": "dark",
       "password": "2",
       "id": 204
+    },
+    {
+      "name": "User Whale",
+      "email": "whale@mail.wh",
+      "theme": "dark",
+      "password": "whale1234",
+      "id": 205
     }
   ],
   "milestones": [

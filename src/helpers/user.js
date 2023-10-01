@@ -5,11 +5,10 @@ export const userLoad = async (componentInstance) => {
     const ui = localStorage.getItem("userId")
     const Us = new User({ userId: ui });
     await Us.fetchData();
-    componentInstance.setState({ user: Us.data })
+    return  Us.data;
 }
 
-export const logOut = async (componentInstance) => {
-    componentInstance.setState({ user: {}, isLoggedIn: false });
+export const logOut = async () => {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
 }
@@ -19,17 +18,20 @@ export const logIn = async (componentInstance) => {
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
-                localStorage.setItem('token', JSON.stringify(new Date()));
+                console.log('data', data)
                 const { id } = data[0];
-                localStorage.setItem("userId", id);
-                window.dispatchEvent(new Event("storage"));
+                localStorage.setItem('userId', id);
+                localStorage.setItem('token', JSON.stringify(new Date()));
+                 window.dispatchEvent(new Event('newUser'));
+                return id;
+               
             }
         })
 }
 
-export const isLoggedIn = async (componentInstance) => {
-    const isLoggedIn = !!localStorage.getItem('token')
-    componentInstance.setState({ isLoggedIn: isLoggedIn });
+export const isLoggedIn = async () => {
+    const isLoggedIn = !!localStorage.getItem('token');
+    return isLoggedIn;
 }
 
 export const signIn = async (componentInstance) => {
@@ -62,7 +64,8 @@ export const signIn = async (componentInstance) => {
 
 }
 
-export const userMilestones = async (userId) => {
+export const usersMilestones = async (userId) => {
+    console.log("Inside Users milestones userId", userId)
     return await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`)
         .then(response => response.json())
         .then(data => {
