@@ -14,7 +14,6 @@ function Configs() {
   useEffect(() => {
     const fetchData = async () => {
       const milestonesData = await milestonesLoad();
-    //   console.log('user', user)
       const userMilestonesData = await usersMilestones(user?.id);
       setMilestones(milestonesData);
       setUserMilestones(userMilestonesData?.milestones);

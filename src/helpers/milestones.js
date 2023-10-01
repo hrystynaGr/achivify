@@ -4,6 +4,7 @@ export const milestonesLoad = async () => {
     try {
         const response = await fetch(`${configs.local_api}/milestones`);
         const milestones = await response.json();
+        return milestones;
         // componentInstance.setState({milestones: milestones})
     } catch (error) {
         console.error("Error fetching user data:", error);
