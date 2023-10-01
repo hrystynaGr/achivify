@@ -5,11 +5,6 @@ import { milestonesLoad } from '../../helpers/milestones';
 import CInput from '../../atoms/c-input/c-input';
 import { userMilestones, changeUserMilestones } from '../../helpers/user';
 
-//loadUsermilestones
-// modify  them
-//button to send them
-//fix how checkboxes look
-//check if mails was added
 class Configs extends Component {
 
     constructor(props) {
@@ -57,7 +52,7 @@ class Configs extends Component {
             this.setState({ usermilestones: this.state.usermilestones })
         }
         else {
-            const filteredUserMilestones = this.state.usermilestones.filter((elem) => elem != event.target.id)
+            const filteredUserMilestones = this.state.usermilestones.filter((elem) => elem !== event.target.id)
             this.setState({ usermilestones: filteredUserMilestones })
         }
         //send only update and correct state information

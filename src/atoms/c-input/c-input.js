@@ -11,7 +11,7 @@ class CInput extends Component {
     }
 
     handleChange = (event) => {
-        if (this.props.type != 'checkbox') {
+        if (this.props.type !== 'checkbox') {
             const newValue = event.target.value;
             this.setState({ message: newValue });
             // Pass the updated value to the parent component's function
