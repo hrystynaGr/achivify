@@ -7,7 +7,6 @@ import { usersMilestones, changeUserMilestones } from '../../helpers/user';
 
 function Configs() {
   const { theme, user } = useContext(AchivifyContext);
-  // alert(JSON.stringify(user))
   const [milestones, setMilestones] = useState({});
   const [userMilestones, setUserMilestones] = useState([]);
   const [userMilestonesId, setUserMilestonesId] = useState(0);
@@ -26,7 +25,6 @@ function Configs() {
   }, [user]);
 
   useEffect(() => {
-    // Now, checkboxesRef.current should contain the checkbox elements
     checkboxesState();
   }, [userMilestones]);
 
@@ -48,14 +46,15 @@ function Configs() {
   };
 
   const onClick = (event) => {
+    let upd;
     if (event.target.checked) {
-      const updUserMilestones = [...userMilestones, +event.target.id];
-      setUserMilestones(updUserMilestones);
-      changeUserMilestones({ userMilestones: updUserMilestones, userMilestonesId, user });
+      upd = [...userMilestones, +event.target.id];
+      setUserMilestones(upd);
+      changeUserMilestones({ userMilestones: upd, userMilestonesId, user });
     } else {
-      const updUserMilestones = userMilestones.filter((elem) => elem !== +event.target.id);
-      setUserMilestones(updUserMilestones);
-      changeUserMilestones({ userMilestones: updUserMilestones, userMilestonesId, user  });
+      upd = userMilestones.filter((elem) => elem !== +event.target.id);
+      setUserMilestones(upd);
+      changeUserMilestones({ userMilestones: upd, userMilestonesId, user });
     }
   };
 

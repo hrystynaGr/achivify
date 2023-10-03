@@ -1,49 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useState } from 'react';
 import './c-input.scss';
 import { AchivifyContext } from '../../MyContext';
 
-class CInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            message: '',
-        };
-    }
+function CInput(props) {
+    const { theme, user } = useContext(AchivifyContext);
+    const [messege, setMessege] = useState('');
 
-    handleChange = (event) => {
-        if (this.props.type !== 'checkbox') {
+    const handleChange = (event) => {
+        if (props.type !== 'checkbox') {
             const newValue = event.target.value;
-            this.setState({ message: newValue });
+            setMessege(newValue);
             // Pass the updated value to the parent component's function
-            this.props.func(newValue);
+            props.func(newValue);
         }
     }
 
-    handleClick = (event) => {
-        if (this.props.type === 'checkbox') {
+    const handleClick = (event) => {
+        if (props.type === 'checkbox') {
             // Pass the updated value to the parent component's function
-            this.props.func(event)
+            props.func(event)
         }
     }
 
-    render() {
-        return (
-            <div className="CInput">
-                <label className={`label ${this.props.type}-label`} theme={this.context.theme}>{this.props.label || this.props.type}</label>
-                <input
-                    type={this.props.type}
-                    id={this.props.id}
-                    name={this.props.type}
-                    value={this.state.message}
-                    onChange={this.handleChange}
-                    className={this.props.type}
-                    onClick={this.handleClick}
-                />
-            </div>
-        );
-    }
+    return (
+        <div className="CInput">
+            <label className={`label ${props.type}-label`} theme={theme}>{props.label || props.type}</label>
+            <input
+                type={props.type}
+                id={props.id}
+                name={props.type}
+                value={messege}
+                onChange={handleChange}
+                className={props.type}
+                onClick={handleClick}
+            />
+        </div>
+    );
+
 }
-
-CInput.contextType = AchivifyContext;
 
 export default CInput;

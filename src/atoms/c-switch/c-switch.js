@@ -1,46 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState, useContext } from 'react';
 import { AchivifyContext } from '../../MyContext';
 import './c-switch.scss';
 
-class CSwitch extends Component {
+const CSwitch = (props) => {
+    const { theme } = useContext(AchivifyContext)
+    const { values, grabTheme, keyName } = props;
 
-    componentDidMount = () => {
-        this.checkbox = document.getElementById('switcher');
-        if(this.context.theme === this.props.values[0]) {
-            this.checkbox.setAttribute('checked', 'checked')
-        }
-        else {
-            this.checkbox.removeAttribute('checked')
-        }
-    }
-
-    checkToggle = () => {
-        const [value_one, value_two] = this.props.values
-        if (this.checkbox.checked) {
-            this.props.grabTheme(value_one)
+    useEffect(() => {
+        const checkbox = document.getElementById('switcher');
+        if (theme === values[0]) {
+            checkbox.setAttribute('checked', 'checked');
         } else {
-            this.props.grabTheme(value_two)
+            checkbox.removeAttribute('checked');
         }
-    }
+    }, [theme]);
 
-    isChecked = () => {
-        if (localStorage.getItem(this.props.keyName) === this.props.values[0]) {
-            this.checkbox.setAttribute('checked', true)
+    const checkToggle = () => {
+        const [value_one, value_two] = values;
+        if (document.getElementById('switcher').checked) {
+            grabTheme(value_one);
         } else {
-            this.checkbox.removeAttribute('checked')
+            grabTheme(value_two);
         }
-    }
+    };
 
-    render() {
-        return (
-            <label className="switch" theme={this.context.theme}>
-                <input id='switcher' type="checkbox" onClick={this.checkToggle} onChange={this.isChecked}></input>
-                <span className="slider round"></span>
-            </label>
-        );
-    }
-}
+    useEffect(() => {
+        const checkbox = document.getElementById('switcher');
+        if (localStorage.getItem(keyName) === values[0]) {
+            checkbox.setAttribute('checked', true);
+        } else {
+            checkbox.removeAttribute('checked');
+        }
+    }, [keyName, values]);
 
-CSwitch.contextType = AchivifyContext;
+    return (
+        <label className="switch" theme={theme}>
+            <input id="switcher" type="checkbox" onClick={checkToggle} onChange={checkToggle} />
+            <span className="slider round"></span>
+        </label>
+    );
+};
 
 export default CSwitch;

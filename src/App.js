@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await userLoad(this);
+      const response = await userLoad();
       const response2 = await isLoggedIn(this);
       setUser(response);
       setLoggedIn(response2);

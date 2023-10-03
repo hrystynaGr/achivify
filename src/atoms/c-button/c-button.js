@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 
 import { AchivifyContext } from '../../MyContext';
 import './c-button.scss';
 
-class CButton extends Component {
-    render() {
-        return (
-            <div className={`CButton ${this.props.styling}`} theme={this.context.theme}>
-                <button
-                    type="button"
-                    className={`button ${this.props.styling + '-inner'}`}
-                    onClick={this.props.onClick}
-                >
-                    {this.props.innerText}
-                </button>
-            </div>
-        );
-    }
+function CButton(props) {
+    const { theme } = useContext(AchivifyContext)
+    return (
+        <div className={`CButton ${props.styling}`} theme={theme}>
+            <button
+                type="button"
+                className={`button ${props.styling + '-inner'}`}
+                onClick={props.onClick}
+            >
+                {props.innerText}
+            </button>
+        </div>
+    );
 }
-
-CButton.contextType = AchivifyContext;
 
 export default CButton;

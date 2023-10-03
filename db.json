@@ -76,6 +76,13 @@
       "theme": "dark",
       "password": "whale1234",
       "id": 205
+    },
+    {
+      "name": "happy-goat",
+      "email": "happygoat@gmail.com",
+      "theme": "dark",
+      "password": "goat123",
+      "id": 206
     }
   ],
   "milestones": [
@@ -149,12 +156,12 @@
       "userid": 200,
       "milestones": [
         101,
-        102,
-        103,
         104,
         105,
-        106,
-        107
+        107,
+        103,
+        102,
+        106
       ],
       "id": 56
     },
