@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect} from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './App.scss';
-import { BrowserRouter, Route, Routes, Navigate, useNavigate} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as GearSVG } from './gear.svg'
 import { AchivifyContext } from './MyContext';
@@ -14,14 +14,14 @@ import { userLoad, isLoggedIn, logOut } from './helpers/user'
 import { pageName, isObjEmpty } from './helpers/shared';
 
 function App() {
-  const [user, setUser] = useState();
-  const [loggedIn, setLoggedIn] = useState();
+  const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState('');
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await userLoad();
-      const response2 = await isLoggedIn(this);
+      const response2 = await isLoggedIn();
       setUser(response);
       setLoggedIn(response2);
     };
@@ -36,9 +36,9 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    
-  }, [isLoggedIn])
+  // useEffect(() => {
+
+  // }, [isLoggedIn])
 
   const grabTheme = (selectedTheme) => {
     setTheme(selectedTheme);
@@ -83,7 +83,7 @@ function App() {
       topGear = <GearSVG />;
     }
 
-    const contextValues = { user, loggedIn, theme, grabTheme };
+    const contextValues = { user: user, loggedIn: loggedIn, theme: theme, grabTheme: grabTheme };
 
     return (
       <AchivifyContext.Provider value={contextValues}>
@@ -99,11 +99,12 @@ function App() {
             {gear}
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={loggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
-                <Route path="/login" element={<Login />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/configs" element={<Configs />} />
                 <Route path="/signin" element={<SignIn />} />
+                <Route path="/" element={!!loggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </BrowserRouter>
           </header>
