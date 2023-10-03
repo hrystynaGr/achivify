@@ -63,7 +63,6 @@ function App() {
     return <h4>We can't fetch info about user, but we are working on it</h4>
   } else {
     let button, gear, topGear;
-    console.log('pageName', pageName())
     if (pageName() === 'login' || pageName() === 'signin') {
       const currpageName = pageName() === 'login' ? 'signin' : 'login';
       button = <CButton onClick={() => currpageName === 'login' ? login() : signin()} styling={currpageName} innerText={currpageName} />;

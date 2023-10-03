@@ -18,7 +18,6 @@ export const logIn = async (componentInstance) => {
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
-                console.log('data', data)
                 const { id } = data[0];
                 localStorage.setItem('userId', id);
                 localStorage.setItem('token', JSON.stringify(new Date()));
@@ -65,7 +64,6 @@ export const signIn = async (componentInstance) => {
 }
 
 export const usersMilestones = async (userId) => {
-    console.log("Inside Users milestones userId", userId)
     return await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`)
         .then(response => response.json())
         .then(data => {
@@ -75,10 +73,10 @@ export const usersMilestones = async (userId) => {
 
 export const changeUserMilestones = async (componentInstance) => {
     const data = {
-        // id: componentInstance?.userMilestonesId,
-        userid: componentInstance?.context?.user?.id,
-        milestones: componentInstance?.state?.usermilestones
+        userid: componentInstance?.user?.id,
+        milestones: componentInstance?.userMilestones
     };
+
     fetch(`${configs.local_api}/usersMilestones/${componentInstance?.userMilestonesId}`, {
         method: 'PUT',
         headers: {

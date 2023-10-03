@@ -7,25 +7,31 @@ import { usersMilestones, changeUserMilestones } from '../../helpers/user';
 
 function Configs() {
   const { theme, user } = useContext(AchivifyContext);
+  // alert(JSON.stringify(user))
   const [milestones, setMilestones] = useState({});
   const [userMilestones, setUserMilestones] = useState([]);
   const [userMilestonesId, setUserMilestonesId] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const milestonesData = await milestonesLoad();
-      const userMilestonesData = await usersMilestones(user?.id);
-      setMilestones(milestonesData);
-      setUserMilestones(userMilestonesData?.milestones);
-      setUserMilestonesId(userMilestonesData?.id);
-      checkboxesState();
-    };
+    if (user) {
+      const fetchData = async () => {
+        const milestonesData = await milestonesLoad();
+        const userMilestonesData = await usersMilestones(user?.id);
+        setMilestones(milestonesData);
+        setUserMilestones(userMilestonesData.milestones);
+        setUserMilestonesId(userMilestonesData?.id);
+      };
+      fetchData();
+    }
+  }, [user]);
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    // Now, checkboxesRef.current should contain the checkbox elements
+    checkboxesState();
+  }, [userMilestones]);
 
   const isChecked = (milestoneId) => {
-    return userMilestones.includes(+milestoneId);
+    return userMilestones?.includes(+milestoneId);
   };
 
   const checkboxesState = () => {
@@ -43,12 +49,13 @@ function Configs() {
 
   const onClick = (event) => {
     if (event.target.checked) {
-      setUserMilestones([...userMilestones, +event.target.id]);
-      changeUserMilestones({ userMilestones, userMilestonesId });
+      const updUserMilestones = [...userMilestones, +event.target.id];
+      setUserMilestones(updUserMilestones);
+      changeUserMilestones({ userMilestones: updUserMilestones, userMilestonesId, user });
     } else {
-      const filteredUserMilestones = userMilestones.filter((elem) => elem !== +event.target.id);
-      setUserMilestones(filteredUserMilestones);
-      changeUserMilestones({ userMilestones: filteredUserMilestones, userMilestonesId });
+      const updUserMilestones = userMilestones.filter((elem) => elem !== +event.target.id);
+      setUserMilestones(updUserMilestones);
+      changeUserMilestones({ userMilestones: updUserMilestones, userMilestonesId, user  });
     }
   };
 
