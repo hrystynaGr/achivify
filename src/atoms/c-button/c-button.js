@@ -5,14 +5,16 @@ import './c-button.scss';
 
 function CButton(props) {
     const { theme } = useContext(AchivifyContext)
+    const {styling, onClick, innerText} = props;
+    
     return (
-        <div className={`CButton ${props.styling}`} theme={theme}>
+        <div className={`CButton ${ styling}`} theme={theme}>
             <button
                 type="button"
-                className={`button ${props.styling + '-inner'}`}
-                onClick={props.onClick}
+                className={`button ${ styling + '-inner'}`}
+                onClick={ onClick}
             >
-                {props.innerText}
+                { innerText}
             </button>
         </div>
     );

@@ -1,0 +1,17 @@
+@import '/src/styles/shared.scss';
+
+
+.ConfigsTime {
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    width: 70%;
+}
+
+.ConfigsTime label {
+    --c-label-min-width: none;
+}

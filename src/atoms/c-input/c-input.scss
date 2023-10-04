@@ -12,9 +12,10 @@ label.label {
     font-size: 1em;
     margin-right: var(--padding);
     text-transform: capitalize;
-    min-width: 110px;
+    min-width: var(--c-label-min-width, 110px);
     text-align: left;
     color: var(--primary-text);
+    white-space: nowrap;
 }
 
 label.label.checkbox-label {

@@ -4,34 +4,35 @@ import { AchivifyContext } from '../../MyContext';
 
 function CInput(props) {
     const { theme, user } = useContext(AchivifyContext);
+    const { label, type, id, func } = props;
     const [messege, setMessege] = useState('');
 
     const handleChange = (event) => {
-        if (props.type !== 'checkbox') {
+        if (type !== 'checkbox') {
             const newValue = event.target.value;
             setMessege(newValue);
             // Pass the updated value to the parent component's function
-            props.func(newValue);
+            func(newValue);
         }
     }
 
     const handleClick = (event) => {
-        if (props.type === 'checkbox') {
+        if (type === 'checkbox') {
             // Pass the updated value to the parent component's function
-            props.func(event)
+            func(event)
         }
     }
 
     return (
         <div className="CInput">
-            <label className={`label ${props.type}-label`} theme={theme}>{props.label || props.type}</label>
+            <label className={`label ${type}-label`} theme={theme}>{label || type}</label>
             <input
-                type={props.type}
-                id={props.id}
-                name={props.type}
+                type={type}
+                id={id}
+                name={type}
                 value={messege}
                 onChange={handleChange}
-                className={props.type}
+                className={type}
                 onClick={handleClick}
             />
         </div>

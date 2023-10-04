@@ -136,3 +136,14 @@ export const changeUserMilestones = async (componentInstance) => {
 
 }
 
+export const loadUsersTimeStudied = async (user) => {
+    try {
+        const response = await fetch(`${configs.local_api}/timeStudied?userid=${user.id}`)
+        const fetchedData = await response.json()
+        return fetchedData[0]
+    }
+    catch (error) {
+        console.error('Failed to GET from /timeStudied', error)
+    }
+}
+

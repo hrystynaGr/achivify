@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import './App.scss';
 import { BrowserRouter, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 
+import { ReactComponent as StopwatchSVG } from './stopwatch.svg'
 import { ReactComponent as GearSVG } from './gear.svg'
 import { AchivifyContext } from './MyContext';
 import Login from './molecules/login/login';
@@ -10,6 +11,7 @@ import Configs from './organisms/configs/configs';
 import CButton from './atoms/c-button/c-button';
 import CSwitch from './atoms/c-switch/c-switch';
 import SignIn from './molecules/sign-in/sign-in';
+import ConfigsTime from './organisms/configs-time/configs-time';
 import { userLoad, isLoggedIn, logOut } from './helpers/user'
 import { isObjEmpty } from './helpers/shared';
 
@@ -36,10 +38,6 @@ function App() {
     };
   }, [isLoggedIn]);
 
-  // useEffect(() => {
-
-  // }, [isLoggedIn])
-
   const grabTheme = (selectedTheme) => {
     setTheme(selectedTheme);
     localStorage.setItem('theme', selectedTheme);
@@ -63,10 +61,11 @@ function App() {
   if (!isObjEmpty(user)) {
     return null;
   } else {
-    let button, topGear;
+    let button, topGear, stopWatch;
     if (loggedIn) {
       button = <CButton onClick={() => logout()} styling="logout" innerText="logout" />;
       topGear = <GearSVG />;
+      stopWatch = <StopwatchSVG/>;
     } else {
       button = (
         <div style={{ display: 'flex' }}>
@@ -75,6 +74,7 @@ function App() {
         </div>
       );
       topGear = null;
+      stopWatch = null;
     }
     const contextValues = { user: user, loggedIn: loggedIn, theme: theme, grabTheme: grabTheme };
     return (
@@ -84,6 +84,7 @@ function App() {
             <div>
               <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
               <a href="/configs">{topGear}</a>
+              <a href="/configs/time">{stopWatch}</a>
             </div>
             {button}
           </div>
@@ -92,6 +93,7 @@ function App() {
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/configs/time" element={<ConfigsTime />} />
                 <Route path="/configs" element={<Configs />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/" element={loggedIn ? <Navigate to="/dashboard"/> : <Navigate to="/login"/>} />
