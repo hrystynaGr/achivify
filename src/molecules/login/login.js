@@ -3,9 +3,11 @@ import React, { useContext, useState } from 'react';
 // import { redirect } from 'react-router'
 import './login.scss';
 import { AchivifyContext } from '../../MyContext';
+import { ReactComponent as GearSVG } from '../../gear.svg'
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
 import { logIn } from '../../helpers/user';
+import { useLocation } from 'react-router-dom';
 
 function Login() {
   const { theme } = useContext(AchivifyContext);
@@ -26,6 +28,7 @@ function Login() {
 
   return (
     <div className="Login" theme={theme}>
+      <GearSVG />
       <CInput type="email" func={handleMailChange} />
       <CInput type="password" func={handlePassChange} />
       <CButton innerText="Submit" styling="submit" onClick={loggingIn} />

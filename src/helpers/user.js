@@ -21,18 +21,16 @@ export const logOut = async () => {
 export const logIn = async (componentInstance) => {
     //In a real world i would never send password via GET request
     try {
-        await fetch(`${configs.local_api}/users?email=${componentInstance.state.email}&password=${componentInstance.state.password}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    const { id } = data[0];
-                    localStorage.setItem('userId', id);
-                    localStorage.setItem('token', JSON.stringify(new Date()));
-                    window.dispatchEvent(new Event('newUser'));
-                    return id;
+        const response = await fetch(`${configs.local_api}/users?email=${componentInstance.state.email}&password=${componentInstance.state.password}`);
+        const fetchedData = await response.json();
+        if (fetchedData.length > 0) {
+            const { id } = fetchedData[0];
+            localStorage.setItem('userId', id);
+            localStorage.setItem('token', JSON.stringify(new Date()));
+            window.dispatchEvent(new Event('newUser'));
+            return id;
+        }
 
-                }
-            })
     }
     catch (error) {
         console.error('Failed to GET from /users', error);
@@ -52,37 +50,58 @@ export const signIn = async (componentInstance) => {
             theme: 'dark',
             password: componentInstance.state.password,
         };
-        await fetch(`${configs.local_api}/users`, {
+        const response = await fetch(`${configs.local_api}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                logIn(componentInstance);
-            })
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else {
+            const fetchedData = await response.json();
+            createUsersMilestones(fetchedData);
+            logIn(componentInstance);
+        }
     }
     catch (error) {
         console.error('Failed to POST to /users', error);
     };
+}
 
-
+export const createUsersMilestones = async (data) => {
+    try {
+        const params = {
+            userid: data.id,
+            milestones: []
+        }
+        const response = await fetch(`${configs.local_api}/usersMilestones`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        })
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else {
+            return await response.json();
+        }
+    }
+    catch (error) {
+        console.error('Failed to POST to /usersMilestones', error);
+    }
 }
 
 export const usersMilestones = async (userId) => {
     try {
-        return await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                return data[0];
-            })
+        const response = await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`);
+        const fetchedData = await response.json();
+        return fetchedData[0];
     }
     catch (error) {
         console.error('Failed to GET from /usersMilestones', error);
@@ -95,7 +114,7 @@ export const changeUserMilestones = async (componentInstance) => {
             userid: componentInstance?.user?.id,
             milestones: componentInstance?.userMilestones
         };
-        await fetch(`${configs.local_api}/usersMilestones/${componentInstance?.userMilestonesId}`, {
+        const response = await fetch(`${configs.local_api}/usersMilestones/${componentInstance?.userMilestonesId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,12 +122,13 @@ export const changeUserMilestones = async (componentInstance) => {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else {
+            return await response.json();
+        }
     }
     catch (error) {
         console.error('Failed to PUT to /usersMilestones', error);

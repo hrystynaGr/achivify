@@ -34,7 +34,7 @@ function App() {
     return () => {
       window.removeEventListener('newUser', handleStorageChange);
     };
-  }, []);
+  }, [isLoggedIn]);
 
   // useEffect(() => {
 
@@ -62,15 +62,9 @@ function App() {
   if (!isObjEmpty(user)) {
     return <h4>We can't fetch info about user, but we are working on it</h4>
   } else {
-    let button, gear, topGear;
-    if (pageName() === 'login' || pageName() === 'signin') {
-      const currpageName = pageName() === 'login' ? 'signin' : 'login';
-      button = <CButton onClick={() => currpageName === 'login' ? login() : signin()} styling={currpageName} innerText={currpageName} />;
-      gear = <GearSVG />;
-      topGear = <GearSVG />;
-    } else if (loggedIn) {
+    let button, topGear;
+    if (loggedIn) {
       button = <CButton onClick={() => logout()} styling="logout" innerText="logout" />;
-      gear = null;
       topGear = <GearSVG />;
     } else {
       button = (
@@ -79,8 +73,7 @@ function App() {
           <CButton onClick={() => signin()} styling="signin" innerText="signin" />
         </div>
       );
-      gear = null;
-      topGear = <GearSVG />;
+      topGear = null;
     }
 
     const contextValues = { user: user, loggedIn: loggedIn, theme: theme, grabTheme: grabTheme };
@@ -96,14 +89,13 @@ function App() {
             {button}
           </div>
           <header className="App-header">
-            {gear}
             <BrowserRouter>
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/configs" element={<Configs />} />
                 <Route path="/signin" element={<SignIn />} />
-                <Route path="/" element={!!loggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+                <Route path="/" element={loggedIn ? <Navigate to="/dashboard"/> : <Navigate to="/login"/>} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </BrowserRouter>
