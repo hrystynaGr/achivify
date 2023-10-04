@@ -11,7 +11,7 @@ import CButton from './atoms/c-button/c-button';
 import CSwitch from './atoms/c-switch/c-switch';
 import SignIn from './molecules/sign-in/sign-in';
 import { userLoad, isLoggedIn, logOut } from './helpers/user'
-import { pageName, isObjEmpty } from './helpers/shared';
+import { isObjEmpty } from './helpers/shared';
 
 function App() {
   const [user, setUser] = useState({});
@@ -49,18 +49,19 @@ function App() {
     logOut();
     setUser({});
     setLoggedIn(false);
+    loginRedirect();
   };
 
-  const signin = () => {
+  const signinRedirect = () => {
     window.location.href = '/signin';
   };
 
-  const login = () => {
+  const loginRedirect = () => {
     window.location.href = '/login';
   };
 
   if (!isObjEmpty(user)) {
-    return <h4>We can't fetch info about user, but we are working on it</h4>
+    return null;
   } else {
     let button, topGear;
     if (loggedIn) {
@@ -69,15 +70,13 @@ function App() {
     } else {
       button = (
         <div style={{ display: 'flex' }}>
-          <CButton onClick={() => login()} styling="login" innerText="login" />
-          <CButton onClick={() => signin()} styling="signin" innerText="signin" />
+          <CButton onClick={() => loginRedirect()} styling="login" innerText="login" />
+          <CButton onClick={() => signinRedirect()} styling="signin" innerText="signin" />
         </div>
       );
       topGear = null;
     }
-
     const contextValues = { user: user, loggedIn: loggedIn, theme: theme, grabTheme: grabTheme };
-
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>

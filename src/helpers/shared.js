@@ -8,6 +8,3 @@ export function isObjEmpty(obj) {
     
 }
 
-export function pageName() {
-    return window.location.pathname.split('/')[1]
-}
