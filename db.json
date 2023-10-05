@@ -139,6 +139,13 @@
       "theme": "dark",
       "password": "8",
       "id": 214
+    },
+    {
+      "name": "lukasik",
+      "email": "lukasik@mail.com",
+      "theme": "dark",
+      "password": "lukasik123",
+      "id": 215
     }
   ],
   "milestones": [
@@ -247,6 +254,14 @@
         105
       ],
       "id": 82
+    },
+    {
+      "userid": 215,
+      "milestones": [
+        101,
+        104
+      ],
+      "id": 83
     }
   ],
   "timeStudied": [
@@ -268,9 +283,68 @@
         {
           "date": "04/10/2023",
           "hoursStudied": "04:05"
+        },
+        {
+          "date": "04/10/2023",
+          "hoursStudied": "03:45"
         }
       ],
       "id": 6
+    },
+    {
+      "userid": 204,
+      "studies": [],
+      "id": 7
+    },
+    {
+      "userid": 204,
+      "studies": [
+        {
+          "date": "05/10/2023",
+          "hoursStudied": "04:04"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "userid": 210,
+      "studies": [],
+      "id": 9
+    },
+    {
+      "userid": 210,
+      "studies": [],
+      "id": 10
+    },
+    {
+      "userid": 212,
+      "studies": [
+        {
+          "date": "05/10/2023",
+          "hoursStudied": "04:04"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "userid": 214,
+      "studies": [],
+      "id": 12
+    },
+    {
+      "userid": 214,
+      "studies": [],
+      "id": 13
+    },
+    {
+      "userid": 211,
+      "studies": [],
+      "id": 14
+    },
+    {
+      "userid": 211,
+      "studies": [],
+      "id": 15
     }
   ],
   "awards": [

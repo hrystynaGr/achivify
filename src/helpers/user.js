@@ -136,14 +136,62 @@ export const changeUserMilestones = async (componentInstance) => {
 
 }
 
+export const addEntryForUserInTimeStudied = async (user) => {
+    try {
+        const data = {
+            userid: user.id,
+            studies: [],
+        }
+        const entry = await doesUserHaveEntryTimeStudied(user);
+        if (entry.length > 0) return entry[0];
+        else {
+            const response = await fetch(`${configs.local_api}/timeStudied`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            else {
+                const rsp = await response.json();
+                console.log('rsp', rsp);
+                return rsp;
+            }
+        }
+
+    }
+    catch (error) {
+        console.error('Failed to PUT to /timeStudied (error in addEntryForUserInTimeStudied)', error);
+    }
+}
+
+export const doesUserHaveEntryTimeStudied = async (user) => {
+    try {
+        const response = await fetch(`${configs.local_api}/timeStudied?userid=${user.id}`)
+        const fetchedData = await response.json()
+        return fetchedData;
+    }
+    catch (error) {
+        console.error('Failed to GET from /timeStudied (error in doesUserHaveEntryTimeStudied)', error)
+    }
+}
+
 export const loadUsersTimeStudied = async (user) => {
     try {
         const response = await fetch(`${configs.local_api}/timeStudied?userid=${user.id}`)
         const fetchedData = await response.json()
-        return fetchedData[0]
+        if (!fetchedData.length) {
+            //try to add an entry for a user in timeStudied
+            const r = await addEntryForUserInTimeStudied(user);
+            return r;
+        }
+        else {
+            return fetchedData[0]
+        }
     }
     catch (error) {
-        console.error('Failed to GET from /timeStudied', error)
+        console.error('Failed to GET from /timeStudied (error in loadUsersTimeStudiedd)', error)
     }
 }
 

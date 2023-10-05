@@ -14,18 +14,17 @@ function ConfigsTime() {
     const [timeStudiedId, setTimeStudiedId] = useState(0);
 
     useEffect(() => {
+        console.log("Use effect runs")
         const fetchData = async () => {
             const response = await loadUsersTimeStudied(user);
-            setTimeStudied(response.studies);
-            setTimeStudiedId(response.id);
-            console.log("GGGGGGGG", response);
+            setTimeStudied(response?.studies);
+            setTimeStudiedId(response?.id);
         }
         fetchData();
 
     }, [])
 
     const handleTimeEnter = async (currStudy) => {
-        console.log(currStudy, typeof currStudy);
         setTimeToday(currStudy)
 
 
@@ -37,11 +36,10 @@ function ConfigsTime() {
             date: date,
             hoursStudied: timeToday
         }
-        console.log("Time submit run", today, [...timeStudied, today]);
         try {
             const data = {
                 userid: user.id,
-                studies: [...timeStudied, today]
+                studies: [...timeStudied , today] 
             }
             const response = await fetch(`${configs.local_api}/timeStudied/${timeStudiedId}`, {
                 method: 'PUT',
