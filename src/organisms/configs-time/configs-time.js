@@ -26,8 +26,6 @@ function ConfigsTime() {
 
     const handleTimeEnter = async (currStudy) => {
         setTimeToday(currStudy)
-
-
     }
 
     const submitTime = async () => {

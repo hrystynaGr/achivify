@@ -262,6 +262,14 @@
         104
       ],
       "id": 83
+    },
+    {
+      "userid": 204,
+      "milestones": [
+        101,
+        103
+      ],
+      "id": 84
     }
   ],
   "timeStudied": [
@@ -293,58 +301,41 @@
     },
     {
       "userid": 204,
-      "studies": [],
-      "id": 7
-    },
-    {
-      "userid": 204,
       "studies": [
         {
-          "date": "05/10/2023",
+          "date": "09/10/2023",
+          "hoursStudied": "06:05"
+        },
+        {
+          "date": "09/10/2023",
           "hoursStudied": "04:04"
         }
       ],
+      "id": 7
+    },
+    {
+      "studies": [],
       "id": 8
     },
     {
-      "userid": 210,
       "studies": [],
       "id": 9
     },
     {
-      "userid": 210,
       "studies": [],
       "id": 10
     },
     {
-      "userid": 212,
-      "studies": [
-        {
-          "date": "05/10/2023",
-          "hoursStudied": "04:04"
-        }
-      ],
+      "studies": [],
       "id": 11
     },
     {
-      "userid": 214,
       "studies": [],
       "id": 12
     },
     {
-      "userid": 214,
       "studies": [],
       "id": 13
-    },
-    {
-      "userid": 211,
-      "studies": [],
-      "id": 14
-    },
-    {
-      "userid": 211,
-      "studies": [],
-      "id": 15
     }
   ],
   "awards": [

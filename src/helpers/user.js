@@ -62,8 +62,6 @@ export const signIn = async (componentInstance) => {
             throw new Error('Network response was not ok');
         }
         else {
-            const fetchedData = await response.json();
-            createUsersMilestones(fetchedData);
             logIn(componentInstance);
         }
     }
@@ -75,7 +73,7 @@ export const signIn = async (componentInstance) => {
 export const createUsersMilestones = async (data) => {
     try {
         const params = {
-            userid: data.id,
+            userid: data,
             milestones: []
         }
         const response = await fetch(`${configs.local_api}/usersMilestones`, {
@@ -101,7 +99,12 @@ export const usersMilestones = async (userId) => {
     try {
         const response = await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`);
         const fetchedData = await response.json();
-        return fetchedData[0];
+        if(!fetchedData.length) {
+            return createUsersMilestones(userId)
+        }
+        else {
+            return fetchedData[0];
+        }
     }
     catch (error) {
         console.error('Failed to GET from /usersMilestones', error);

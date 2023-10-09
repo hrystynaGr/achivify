@@ -17,7 +17,7 @@ function Configs() {
         const milestonesData = await milestonesLoad();
         const userMilestonesData = await usersMilestones(user?.id);
         setMilestones(milestonesData);
-        setUserMilestones(userMilestonesData.milestones);
+        setUserMilestones(userMilestonesData?.milestones);
         setUserMilestonesId(userMilestonesData?.id);
       };
       fetchData();
