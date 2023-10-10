@@ -158,7 +158,6 @@ export const addEntryForUserInTimeStudied = async (user) => {
             }
             else {
                 const rsp = await response.json();
-                console.log('rsp', rsp);
                 return rsp;
             }
         }

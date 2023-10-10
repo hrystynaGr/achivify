@@ -21,7 +21,6 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
-    console.log("App use effect runs")
     const fetchData = async () => {
       const response = await userLoad();
       const response2 = await isLoggedIn();
@@ -35,7 +34,6 @@ function App() {
     window.addEventListener('newUser', handleStorageChange);
 
     return () => {
-      console.log("App use effect CLOSED")
       window.removeEventListener('newUser', handleStorageChange);
     };
   }, []);
@@ -60,7 +58,7 @@ function App() {
     window.location.href = '/login';
   };
 
-  if (!isObjEmpty(user)) {
+  if (isObjEmpty(user)) {
     return null;
   } else {
     let button, topGear, stopWatch;

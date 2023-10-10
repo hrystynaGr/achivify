@@ -14,7 +14,6 @@ function ConfigsTime() {
     const [timeStudiedId, setTimeStudiedId] = useState(0);
 
     useEffect(() => {
-        console.log("Use effect runs")
         const fetchData = async () => {
             const response = await loadUsersTimeStudied(user);
             setTimeStudied(response?.studies);
