@@ -2,7 +2,11 @@
 //returns: true - if no object passed or if passed object is empty
 //returns: false - if object is NOT empty
 export function isObjEmpty(obj) {
-    return !Boolean(Object.keys(obj)?.length)
+    if(obj) {
+        return !Boolean(Object.keys(obj)?.length)
+    } else {
+        return false
+    }
 }
 
 //accepts: nothing
@@ -16,13 +20,13 @@ export function formattedToday() {
 
 //accepts: string "hh:mm" 
 //returns: numbers in munutes
-export function parseTimeToMinutes(timeStudied) {  
+export function parseTimeToMinutes(timeStudied) {
     const hhmm = timeStudied.split(':');
-    const result = (+hhmm[0]*60) + +hhmm[1];
+    const result = (+hhmm[0] * 60) + +hhmm[1];
     return result;
 }
 
 export function dayFromDate(date) {
     const parse = date.split('/');
-    return  Number(parse[0]);
+    return Number(parse[0]);
 }
