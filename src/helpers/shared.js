@@ -26,7 +26,23 @@ export function parseTimeToMinutes(timeStudied) {
     return result;
 }
 
+//accepts: string "dd/mm/yyyy" 
+//returns: days in "dd"
 export function dayFromDate(date) {
     const parse = date.split('/');
     return Number(parse[0]);
+}
+
+//accepts: string "dd/mm/yyyy" 
+//returns: days in "mm"
+export function monthFromDate(date) {
+    const parse = date.split('/');
+    return Number(parse[1]);
+}
+
+//accepts: string "dd/mm/yyyy" 
+//returns: days in "yyyy"
+export function yearFromDate(date) {
+    const parse = date.split('/');
+    return Number(parse[2]);
 }

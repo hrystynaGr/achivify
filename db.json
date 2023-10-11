@@ -291,6 +291,34 @@
         {
           "date": "05/10/2023",
           "hoursStudied": "03:45"
+        },
+        {
+          "date": "10/10/2023",
+          "hoursStudied": "02:30"
+        },
+        {
+          "date": "09/10/2023",
+          "hoursStudied": "03:00"
+        },
+        {
+          "date": "01/10/2023",
+          "hoursStudied": "03:55"
+        },
+        {
+          "date": "11/10/2023",
+          "hoursStudied": "02:00"
+        },
+        {
+          "date": "11/09/2023",
+          "hoursStudied": "08:00"
+        },
+        {
+          "date": "10/08/2023",
+          "hoursStudied": "08:00"
+        },
+        {
+          "date": "08/08/2023",
+          "hoursStudied": "08:00"
         }
       ],
       "id": 6
@@ -308,107 +336,6 @@
         }
       ],
       "id": 7
-    },
-    {
-      "studies": [],
-      "id": 8
-    },
-    {
-      "studies": [],
-      "id": 9
-    },
-    {
-      "studies": [],
-      "id": 10
-    },
-    {
-      "studies": [],
-      "id": 11
-    },
-    {
-      "studies": [],
-      "id": 12
-    },
-    {
-      "studies": [],
-      "id": 13
-    },
-    {
-      "studies": [],
-      "id": 14
-    },
-    {
-      "studies": [],
-      "id": 15
-    },
-    {
-      "studies": [],
-      "id": 16
-    },
-    {
-      "studies": [],
-      "id": 17
-    },
-    {
-      "studies": [],
-      "id": 18
-    },
-    {
-      "studies": [],
-      "id": 19
-    },
-    {
-      "studies": [],
-      "id": 20
-    },
-    {
-      "studies": [],
-      "id": 21
-    },
-    {
-      "studies": [],
-      "id": 22
-    },
-    {
-      "studies": [],
-      "id": 23
-    },
-    {
-      "studies": [],
-      "id": 24
-    },
-    {
-      "studies": [],
-      "id": 25
-    },
-    {
-      "studies": [],
-      "id": 26
-    },
-    {
-      "studies": [],
-      "id": 27
-    },
-    {
-      "studies": [],
-      "id": 28
-    },
-    {
-      "studies": [],
-      "id": 29
-    },
-    {
-      "studies": [],
-      "id": 30
-    },
-    {
-      "studies": [],
-      "id": 31
-    },
-    {
-      "userid": 212,
-      "studies": [],
-      "id": 32
     }
   ],
   "awards": [
