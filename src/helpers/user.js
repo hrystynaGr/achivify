@@ -95,7 +95,7 @@ export const createUsersMilestones = async (data) => {
     }
 }
 
-export const usersMilestones = async (userId) => {
+export const loadUsersMilestones = async (userId) => {
     try {
         const response = await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`);
         const fetchedData = await response.json();

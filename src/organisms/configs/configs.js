@@ -3,7 +3,7 @@ import './configs.scss';
 import { AchivifyContext } from '../../MyContext';
 import CInput from '../../atoms/c-input/c-input';
 import { milestonesLoad } from '../../helpers/milestones';
-import { usersMilestones, changeUserMilestones } from '../../helpers/user';
+import { loadUsersMilestones, changeUserMilestones } from '../../helpers/user';
 
 function Configs() {
   const { theme, user } = useContext(AchivifyContext);
@@ -15,7 +15,7 @@ function Configs() {
     if (user) {
       const fetchData = async () => {
         const milestonesData = await milestonesLoad();
-        const userMilestonesData = await usersMilestones(user?.id);
+        const userMilestonesData = await loadUsersMilestones(user?.id);
         setMilestones(milestonesData);
         setUserMilestones(userMilestonesData?.milestones);
         setUserMilestonesId(userMilestonesData?.id);

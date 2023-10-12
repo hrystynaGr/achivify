@@ -1,30 +1,40 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AchivifyContext } from '../../MyContext';
-import { loadUsersTimeStudied } from '../../helpers/user';
+import { milestonesLoad } from '../../helpers/milestones';
+import { loadUsersTimeStudied, loadUsersMilestones } from '../../helpers/user';
 import { parseTimeToMinutes, dayFromDate, isObjEmpty, monthFromDate, yearFromDate, formattedToday } from '../../helpers/shared';
 import './dashboard.scss';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import CButton from '../../atoms/c-button/c-button';
+import CProgressBar from '../../atoms/c-progressbar/c-progress-bar';
 
 function Dashboard(props) {
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const year = 2023;
+
   const { loggedIn, user, theme } = useContext(AchivifyContext);
   const [usersTimeStudied, setUsersTimeStudied] = useState({});
   const [monthDataSet, setMonthDataSet] = useState([]);
   const [month, setMonth] = useState(0);
   const [months, setMonths] = useState([]);
-  const [year, setYear] = useState(2023);
-  const [monthNames, setMonthNames] = useState([
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ])
+  const [milestonesCount, setMilestonesCount] = useState(0);
+  const [usersMilestonesCount, setUsersMilestonesCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await loadUsersTimeStudied(user);
       setUsersTimeStudied(data);
+      const milestones = await milestonesLoad();
+      setMilestonesCount(milestones.length);
+      const usersMilestones = await loadUsersMilestones(user.id);
+      setUsersMilestonesCount(usersMilestones.milestones.length)
     }
     fetchData();
+
   }, [user])
 
   useEffect(() => {
@@ -93,10 +103,10 @@ function Dashboard(props) {
       label: 'Time studied in a month',
       data: dataset,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
+        'rgba(238,108,77,0.2)',
       ],
       borderColor: [
-        'rgb(255, 99, 132)',
+        'rgba(238,108,77)',
       ],
       borderWidth: 1
     }]
@@ -108,8 +118,8 @@ function Dashboard(props) {
     options: {
       scales: {
         y: {
-          beginAtZero: true
-        }
+          beginAtZero: true,
+        },
       },
       responsive: true
     },
@@ -120,15 +130,21 @@ function Dashboard(props) {
   } else {
     return (
       <div className="Dashboard" theme={theme}>
-        {textElem}
+        <h4>{'Time Studied:'}</h4>
         <div className='chart-wrap'>
           <Bar options={config} data={data} />
         </div>
         <div className="month">
-          {months?.map((mth) =>
-            <CButton styling="logout" innerText={monthNames[Number(mth)]} key={mth} onClick={() => setMonth(mth)} />
+          {months.sort(function (a, b) { return b - a })?.map((mth) =>
+            <CButton
+              styling={month === mth ? 'login' : 'logout'}
+              innerText={monthNames[mth - 1]}
+              key={mth}
+              onClick={() => setMonth(mth)} />
           )}
         </div>
+        <h4>{'Your progress on Milestones:'}</h4>
+        <CProgressBar doneFromScope={usersMilestonesCount} allScope={milestonesCount} />
       </div>
     );
   }

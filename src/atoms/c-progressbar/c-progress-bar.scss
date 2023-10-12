@@ -1,0 +1,27 @@
+@import '/src/styles/shared.scss';
+
+.CProgressbar {
+    margin: var(--margin);
+}
+
+.wholeLine {
+    width: 100%;
+    position: relative;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.doneLine {
+    height: 2em;
+    background-color: var(--accent-color-0);
+    animation: progress .5s ease-out;
+
+}
+
+.percent {
+    position: absolute;
+    left: 50%;
+    top: 0.4em;
+    color: var(--secondary-text);
+}
