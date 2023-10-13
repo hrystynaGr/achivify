@@ -1,0 +1,17 @@
+@import '/src/styles/shared.scss';
+
+.CMenuItem {
+    height: 2em;
+    padding: var(--padding);
+    margin-right: var(--margin);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.CMenuItem.active {
+    background-color: var(--primary-color);
+}
+
+.CMenuItem>a {
+    color: var(--primary-text);
+    text-decoration: none;
+}

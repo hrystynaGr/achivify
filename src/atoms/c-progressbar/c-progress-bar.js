@@ -19,7 +19,9 @@ function CProgressBar(props) {
     }
 
     function calculateDone() {
-        document.querySelector('.doneLine').style.width = `${(doneFromScope * 100) / allScope}%`
+        const percent = (doneFromScope * 100) / allScope;
+        document.querySelector('.doneLine').style.width = `${percent}%`
+        return percent;
     }
 
     function animate() {

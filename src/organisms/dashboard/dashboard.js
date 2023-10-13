@@ -5,6 +5,7 @@ import { loadUsersTimeStudied, loadUsersMilestones } from '../../helpers/user';
 import { parseTimeToMinutes, dayFromDate, isObjEmpty, monthFromDate, yearFromDate, formattedToday } from '../../helpers/shared';
 import './dashboard.scss';
 import { Bar } from 'react-chartjs-2';
+// eslint-disable-next-line
 import Chart from 'chart.js/auto';
 import CButton from '../../atoms/c-button/c-button';
 import CProgressBar from '../../atoms/c-progressbar/c-progress-bar';
@@ -16,7 +17,7 @@ function Dashboard(props) {
   ];
   const year = 2023;
 
-  const { loggedIn, user, theme } = useContext(AchivifyContext);
+  const { user, theme } = useContext(AchivifyContext);
   const [usersTimeStudied, setUsersTimeStudied] = useState({});
   const [monthDataSet, setMonthDataSet] = useState([]);
   const [month, setMonth] = useState(0);
@@ -44,18 +45,13 @@ function Dashboard(props) {
     );
     createMonths();
     setMonth(monthFromDate(formattedToday()))
+    // eslint-disable-next-line
   }, [usersTimeStudied]);
 
   useEffect(() => {
     setMonthDataSet(createMonthlyDataset(month, year))
+    // eslint-disable-next-line
   }, [month]);
-
-  let textElem;
-  if (loggedIn) {
-    textElem = <h2>Hello {user.name}, I am Dashboard</h2>;
-  } else {
-    textElem = <h2>Please log in to see the dashboard</h2>;
-  }
 
   function createMonth() {
     let count = 0;
@@ -130,7 +126,7 @@ function Dashboard(props) {
   } else {
     return (
       <div className="Dashboard" theme={theme}>
-        <h4>{'Time Studied:'}</h4>
+        <h3>{'Time Studied:'}</h3>
         <div className='chart-wrap'>
           <Bar options={config} data={data} />
         </div>
@@ -143,7 +139,7 @@ function Dashboard(props) {
               onClick={() => setMonth(mth)} />
           )}
         </div>
-        <h4>{'Your progress on Milestones:'}</h4>
+        <h3>{'Your progress on Milestones:'}</h3>
         <CProgressBar doneFromScope={usersMilestonesCount} allScope={milestonesCount} />
       </div>
     );
