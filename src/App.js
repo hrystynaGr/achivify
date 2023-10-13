@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { BrowserRouter, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
 import { ReactComponent as StopwatchSVG } from './stopwatch.svg'
 import { ReactComponent as GearSVG } from './gear.svg'
@@ -36,6 +36,7 @@ function App() {
     return () => {
       window.removeEventListener('newUser', handleStorageChange);
     };
+    // eslint-disable-next-line
   }, []);
 
   const grabTheme = (selectedTheme) => {
@@ -65,7 +66,7 @@ function App() {
     if (loggedIn) {
       button = <CButton onClick={() => logout()} styling="logout" innerText="logout" />;
       topGear = <GearSVG />;
-      stopWatch = <StopwatchSVG/>;
+      stopWatch = <StopwatchSVG />;
     } else {
       button = (
         <div style={{ display: 'flex' }}>
@@ -96,7 +97,7 @@ function App() {
                 <Route path="/configs/time" element={<ConfigsTime />} />
                 <Route path="/configs" element={<Configs />} />
                 <Route path="/signin" element={<SignIn />} />
-                <Route path="/" element={loggedIn ? <Navigate to="/dashboard"/> : <Navigate to="/login"/>} />
+                <Route path="/" element={loggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </BrowserRouter>

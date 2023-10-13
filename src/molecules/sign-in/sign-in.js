@@ -3,7 +3,7 @@ import { signIn } from '../../helpers/user';
 import './sign-in.scss';
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
-import {ReactComponent as GearSVG} from '../../gear.svg'
+import { ReactComponent as GearSVG } from '../../gear.svg'
 
 function SignIn() {
   const [name, setName] = useState('');
@@ -23,7 +23,7 @@ function SignIn() {
   };
 
   const handleSignIn = () => {
-    signIn({state: { name, email, password }});
+    signIn({ state: { name, email, password } });
   };
 
   return (

@@ -11,7 +11,7 @@ export const milestonesLoad = async () => {
     }
 }
 
-export const milestonesNames = async (milestones) => {  
+export const milestonesNames = async (milestones) => {
     return milestones.map(milestone => milestone.categoryname);
 
 }

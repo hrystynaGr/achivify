@@ -99,7 +99,7 @@ export const loadUsersMilestones = async (userId) => {
     try {
         const response = await fetch(`${configs.local_api}/usersMilestones?userid=${userId}`);
         const fetchedData = await response.json();
-        if(!fetchedData.length) {
+        if (!fetchedData.length) {
             return createUsersMilestones(userId)
         }
         else {

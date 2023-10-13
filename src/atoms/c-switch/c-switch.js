@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { AchivifyContext } from '../../MyContext';
 import './c-switch.scss';
 

@@ -10,7 +10,8 @@ function CProgressBar(props) {
     useEffect(() => {
         calculateDone();
         animate();
-    })
+        // eslint-disable-next-line
+    },[])
 
     function calculatePercentDone() {
         const percent = ((doneFromScope * 100) / allScope).toFixed(0);
@@ -24,7 +25,7 @@ function CProgressBar(props) {
     function animate() {
         document.querySelector('.doneLine').animate([
             { width: 0 },
-            { transform: calculateDone() }
+            { transform: Boolean(calculateDone()) ? calculateDone() : 0 }
         ], {
             duration: 1000,
         });

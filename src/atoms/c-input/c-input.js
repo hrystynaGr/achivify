@@ -1,9 +1,9 @@
-import React, { Component, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './c-input.scss';
 import { AchivifyContext } from '../../MyContext';
 
 function CInput(props) {
-    const { theme, user } = useContext(AchivifyContext);
+    const { theme } = useContext(AchivifyContext);
     const { label, type, id, func } = props;
     const [messege, setMessege] = useState('');
 

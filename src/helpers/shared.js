@@ -2,7 +2,7 @@
 //returns: true - if no object passed or if passed object is empty
 //returns: false - if object is NOT empty
 export function isObjEmpty(obj) {
-    if(obj) {
+    if (obj) {
         return !Boolean(Object.keys(obj)?.length)
     } else {
         return false

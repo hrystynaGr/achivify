@@ -8,7 +8,7 @@ import { formattedToday } from '../../helpers/shared'
 import configs from '../../config';
 
 function ConfigsTime() {
-    const { user, loggedIn, theme } = useContext(AchivifyContext);
+    const { user, theme } = useContext(AchivifyContext);
     const [timeStudied, setTimeStudied] = useState([]);
     const [timeToday, setTimeToday] = useState('');
     const [timeStudiedId, setTimeStudiedId] = useState(0);
@@ -20,7 +20,7 @@ function ConfigsTime() {
             setTimeStudiedId(response?.id);
         }
         fetchData();
-
+        // eslint-disable-next-line
     }, [])
 
     const handleTimeEnter = async (currStudy) => {
@@ -36,7 +36,7 @@ function ConfigsTime() {
         try {
             const data = {
                 userid: user.id,
-                studies: [...timeStudied , today] 
+                studies: [...timeStudied, today]
             }
             const response = await fetch(`${configs.local_api}/timeStudied/${timeStudiedId}`, {
                 method: 'PUT',

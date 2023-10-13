@@ -1,21 +1,18 @@
 {
-  "name": "achivify",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "chart": "^0.1.2",
     "chart.js": "^4.4.0",
-    "i": "^0.3.7",
-    "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.66.1",
+    "sass": "^1.69.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,8 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

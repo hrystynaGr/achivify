@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { AchivifyContext } from '../../MyContext';
 import './c-button.scss';
