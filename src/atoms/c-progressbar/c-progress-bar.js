@@ -25,7 +25,7 @@ function CProgressBar(props) {
     function animate() {
         document.querySelector('.doneLine').animate([
             { width: 0 },
-            { transform: Boolean(calculateDone()) ? calculateDone() : 0 }
+            { transform: calculateDone() }
         ], {
             duration: 1000,
         });

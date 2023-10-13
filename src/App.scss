@@ -40,7 +40,8 @@
   }
 }
 
-.App-header {
+.Main-content {
+  margin: var(--margin);
   background-color: var(--primary-color);
   display: flex;
   flex-grow: 1;
@@ -48,6 +49,20 @@
   align-items: center;
   justify-content: center;
   color: var(--primary-text);
+}
+.Main-content > * {
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--margin) 2em;
+  margin: 0 -var(--margin);
+  font-size: 1em;
+  color: var(--primary-text-hue);
+  opacity: 0.8;
+  border-top: 1px solid var(--primary-color-hue);
 }
 
 @keyframes App-logo-spin {

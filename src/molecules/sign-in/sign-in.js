@@ -27,7 +27,7 @@ function SignIn() {
   };
 
   return (
-    <div className="signIn">
+    <div className="SignIn">
       <GearSVG />
       <CInput type="name" func={handleNameChange} />
       <CInput type="email" func={handleMailChange} />

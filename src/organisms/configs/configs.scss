@@ -2,9 +2,11 @@
 
 .Configs {
     padding: var(--padding);
+    max-width: 70%;
 }
 h2 {
     display: flex;
+    justify-content: center;
     margin-top: 0;
 }
 

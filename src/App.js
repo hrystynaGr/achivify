@@ -81,15 +81,17 @@ function App() {
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>
-          <div className="topBar">
-            <div>
-              <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
-              <a href="/configs">{topGear}</a>
-              <a href="/configs/time">{stopWatch}</a>
-            </div>
-            {button}
-          </div>
           <header className="App-header">
+            <div className="topBar">
+              <div>
+                <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
+                <a href="/configs">{topGear}</a>
+                <a href="/configs/time">{stopWatch}</a>
+              </div>
+              {button}
+            </div>
+          </header>
+          <div className='Main-content'>
             <BrowserRouter>
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -101,7 +103,11 @@ function App() {
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </BrowserRouter>
-          </header>
+          </div>
+          <footer>
+            <div>{'Year 2023'}</div>
+            <div>{'(c) Achivify app!'}</div>
+          </footer>
         </div>
       </AchivifyContext.Provider>
     );
