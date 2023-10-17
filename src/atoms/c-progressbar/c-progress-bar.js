@@ -19,7 +19,7 @@ function CProgressBar(props) {
     }
 
     function calculateDone() {
-        const percent = (doneFromScope * 100) / allScope;
+        const percent = ((doneFromScope * 100) / allScope).toFixed(0);
         document.querySelector('.doneLine').style.width = `${percent}%`
         return percent;
     }

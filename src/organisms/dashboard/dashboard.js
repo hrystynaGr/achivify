@@ -24,6 +24,9 @@ function Dashboard(props) {
   const [months, setMonths] = useState([]);
   const [milestonesCount, setMilestonesCount] = useState(0);
   const [usersMilestonesCount, setUsersMilestonesCount] = useState(0);
+  const [timeInMonth, setTimeInMonth] = useState(0);
+  const [timeInMonthTrend, setTimeInMonthTrend] = useState(0);
+  const [avgDayStudy, setAvgDayStudy] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +55,17 @@ function Dashboard(props) {
     // eslint-disable-next-line
   }, [month]);
 
+  useEffect(() => {
+    monthStudies();
+  }, [monthDataSet])
+
+  useEffect(() => {
+    timeTwoMonthTrend();
+    avgtimeDay();
+  }, [timeInMonth, months, month])
+
+
+
   function createMonth() {
     let count = 0;
     const result = [];
@@ -64,6 +78,31 @@ function Dashboard(props) {
   function createMonths() {
     let times = new Set(usersTimeStudied?.studies?.map((el) => monthFromDate(el.date)));
     setMonths(Array.from(times));
+  }
+
+  function monthStudies() {
+    let data = 0;
+    if (!monthDataSet.every((el) => el === 0)) {
+      data = monthDataSet?.reduce((acc, data) => data + acc) / 60
+    }
+    setTimeInMonth(data);
+  }
+
+  function avgtimeDay() {
+    const daysStudied = monthDataSet?.filter((el) => Boolean(el)).length;
+    const res = timeInMonth / daysStudied;
+    setAvgDayStudy(res);
+  }
+
+  function timeTwoMonthTrend() {
+    let res = 0;
+    const prevMonth = months[months.indexOf(month) + 1];
+    const thisMonthData = timeInMonth * 60;
+    const prevMonthData = createMonthlyDataset(prevMonth, year).reduce((acc, data) => data + acc);
+    if (prevMonth) {
+      res = (thisMonthData * 100) / prevMonthData;
+    }
+    setTimeInMonthTrend(res);
   }
 
   function createMonthlyDataset(month, year) {
@@ -137,6 +176,15 @@ function Dashboard(props) {
               key={mth}
               onClick={() => setMonth(mth)} />
           )}
+        </div>
+        <h3>Your trends:</h3>
+        <div className='trends'>
+          <h4>Time Studied in a moonth:</h4>
+          <div>{timeInMonth.toFixed(0)}</div>
+          <h4>This month trend in comparison to previous:</h4>
+          <div>{`${timeInMonthTrend.toFixed(0)}%`}</div>
+          <h4>Average time studied in a day:</h4>
+          <div>{`${avgDayStudy.toFixed(1)}h`}</div>
         </div>
         <h3>{'Your progress on Milestones:'}</h3>
         <CProgressBar doneFromScope={usersMilestonesCount} allScope={milestonesCount} />
