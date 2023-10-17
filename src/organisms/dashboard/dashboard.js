@@ -35,7 +35,6 @@ function Dashboard(props) {
       setUsersMilestonesCount(usersMilestones.milestones.length)
     }
     fetchData();
-
   }, [user])
 
   useEffect(() => {
