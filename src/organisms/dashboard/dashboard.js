@@ -22,8 +22,12 @@ function Dashboard(props) {
   const [monthDataSet, setMonthDataSet] = useState([]);
   const [month, setMonth] = useState(0);
   const [months, setMonths] = useState([]);
-  const [milestonesCount, setMilestonesCount] = useState(0);
-  const [usersMilestonesCount, setUsersMilestonesCount] = useState(0);
+  const [milestones, setMilestones] = useState(0);
+  const [juniorScope, setJuniorScope] = useState(0);
+  const [middleScope, setMiddleScope] = useState(0);
+  const [seniorScope, setSeniorScope] = useState(0);
+  const [usersJuniorScope, setUsersJuniorScope] = useState(0);
+  const [usersMilestones, setUsersMilestones] = useState(0);
   const [timeInMonth, setTimeInMonth] = useState(0);
   const [timeInMonthTrend, setTimeInMonthTrend] = useState(0);
   const [avgDayStudy, setAvgDayStudy] = useState(0);
@@ -32,10 +36,10 @@ function Dashboard(props) {
     const fetchData = async () => {
       const data = await loadUsersTimeStudied(user);
       setUsersTimeStudied(data);
-      const milestones = await milestonesLoad();
-      setMilestonesCount(milestones.length);
+      const milestns = await milestonesLoad();
+      setMilestones(milestns);
       const usersMilestones = await loadUsersMilestones(user.id);
-      setUsersMilestonesCount(usersMilestones.milestones.length)
+      setUsersMilestones(usersMilestones.milestones)
     }
     fetchData();
   }, [user])
@@ -64,8 +68,30 @@ function Dashboard(props) {
     avgtimeDay();
   }, [timeInMonth, months, month])
 
+  useEffect(() => {
+    const juniorSc = countScope('junior', milestones);
+    const middleSc = countScope('middle', milestones);
+    const seniorSc = countScope('senior', milestones);
+    setJuniorScope(juniorSc);
+    setMiddleScope(middleSc);
+    setSeniorScope(seniorSc);
+  }, [milestones])
+
+  useEffect(() => {
+    const juniorSc = countScope('junior', usersMilestones);
+    const middleSc = countScope('middle', usersMilestones);
+    const seniorSc = countScope('senior', usersMilestones);
+    setUsersJuniorScope(juniorSc);
+  }, [usersMilestones])
 
 
+  function countScope(lvl, obj) {
+    console.log(lvl, obj)
+    if (obj) {
+      const scope = obj?.find((el) => el.chapter === lvl).categories
+      return Object.values(scope).reduce((acc, el) => acc + el.length, 0)
+    }
+  }
   function createMonth() {
     let count = 0;
     const result = [];
@@ -180,14 +206,19 @@ function Dashboard(props) {
         <h3>Your trends:</h3>
         <div className='trends'>
           <h4>Time Studied in a moonth:</h4>
-          <div>{timeInMonth.toFixed(0)}</div>
+          <div>{`${timeInMonth.toFixed(0)}h`}</div>
           <h4>This month trend in comparison to previous:</h4>
           <div>{`${timeInMonthTrend.toFixed(0)}%`}</div>
           <h4>Average time studied in a day:</h4>
           <div>{`${avgDayStudy.toFixed(1)}h`}</div>
         </div>
         <h3>{'Your progress on Milestones:'}</h3>
-        <CProgressBar doneFromScope={usersMilestonesCount} allScope={milestonesCount} />
+        <h4>Junior</h4>
+        <CProgressBar doneFromScope={usersJuniorScope} allScope={juniorScope} />
+        <h4>Middle</h4>
+        <CProgressBar doneFromScope={usersJuniorScope} allScope={middleScope} />
+        <h4>Senior</h4>
+        <CProgressBar doneFromScope={usersJuniorScope} allScope={seniorScope} />
       </div>
     );
   }

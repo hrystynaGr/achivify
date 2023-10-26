@@ -73,9 +73,53 @@ export const signIn = async (componentInstance) => {
 export const createUsersMilestones = async (data) => {
     try {
         const params = {
-            userid: data,
-            milestones: []
+            "userid": data,
+            "milestones": {
+                "junior": {
+                    "categories": {
+                        "common": [],
+                        "JScore": [],
+                        "functions": [],
+                        "front-end": [],
+                        "layout": [],
+                        "react": [],
+                        "instruments": []
+                    },
+                    "bonus": {
+                        "back-end": []
+                    },
+                    "practice": []
+                },
+                "middle": {
+                    "categories": {
+                        "common": [],
+                        "JScore": [],
+                        "functions": [],
+                        "front-end": [],
+                        "layout": [],
+                        "react": [],
+                        "instruments": []
+                    },
+                    "bonus": {
+                        "back-end": []
+                    },
+                    "practice": []
+                },
+                "senior": {
+                    "categories": {
+                        "common": [],
+                        "JScore": [],
+                        "front-end": [],
+                        "instruments": []
+                    },
+                    "bonus": {
+                        "back-end": []
+                    },
+                    "practice": []
+                }
+            }
         }
+
         const response = await fetch(`${configs.local_api}/usersMilestones`, {
             method: 'POST',
             headers: {
@@ -113,6 +157,7 @@ export const loadUsersMilestones = async (userId) => {
 
 export const changeUserMilestones = async (componentInstance) => {
     try {
+        console.log('componentInstance?.userMilestones', componentInstance?.userMilestones)
         const data = {
             userid: componentInstance?.user?.id,
             milestones: componentInstance?.userMilestones

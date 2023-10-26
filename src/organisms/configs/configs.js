@@ -29,7 +29,8 @@ function Configs() {
   }, [userMilestones]);
 
   const isChecked = (milestoneId) => {
-    return userMilestones?.includes(+milestoneId);
+    const [lvl, catg, quest] = milestoneId.split('_');
+    return userMilestones[lvl]?.categories[catg]?.includes(+quest);
   };
 
   const checkboxesState = () => {
@@ -47,14 +48,18 @@ function Configs() {
 
   const onClick = (event) => {
     let upd;
+     // event.target.id = junior_common_1
+    const [lvl, catg, quest] = event.target.id.split('_');
     if (event.target.checked) {
-      upd = [...userMilestones, +event.target.id];
-      setUserMilestones(upd);
-      changeUserMilestones({ userMilestones: upd, userMilestonesId, user });
+      // console.log(event, userMilestones, lvl,catg,quest, userMilestones[lvl], userMilestones[lvl].categories[catg])
+      userMilestones[lvl]?.categories[catg].push(+quest)
+      setUserMilestones(userMilestones);
+      changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     } else {
-      upd = userMilestones.filter((elem) => elem !== +event.target.id);
-      setUserMilestones(upd);
-      changeUserMilestones({ userMilestones: upd, userMilestonesId, user });
+      upd = userMilestones[lvl]?.categories[catg].filter((elem) => elem !== +quest);
+      userMilestones[lvl].categories[catg] = [...upd];
+      setUserMilestones(userMilestones);
+      changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     }
   };
 
@@ -68,13 +73,21 @@ function Configs() {
       <p>Go on! Mark what you have already done to track your progress.</p>
       <div className="list">
         {Object.values(milestones).map((milestone) => (
-          <CInput
-            key={milestone.name}
-            type="checkbox"
-            label={milestone.name}
-            id={milestone.id}
-            func={onClick}
-          />
+          <div key={milestone.name}>
+            <h4>{milestone.name}</h4>
+            {Object.entries(milestone.categories).map(([key, value]) => (
+              <div key={key} className='category-container'>
+                <h4>{key}</h4>
+                {value.map((e) => (<CInput
+                  key={key + e}
+                  type="checkbox"
+                  label={e}
+                  id={milestone.name + '_' + key + '_' + e}
+                  func={onClick}
+                />))}
+              </div>
+            ))}
+          </div>
         ))}
       </div>
     </div>
