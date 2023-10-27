@@ -27,6 +27,8 @@ function Dashboard(props) {
   const [middleScope, setMiddleScope] = useState(0);
   const [seniorScope, setSeniorScope] = useState(0);
   const [usersJuniorScope, setUsersJuniorScope] = useState(0);
+  const [usersMiddleScope, setUsersMiddleScope] = useState(0);
+  const [usersSeniorScope, setUsersSeniorScope] = useState(0);
   const [usersMilestones, setUsersMilestones] = useState(0);
   const [timeInMonth, setTimeInMonth] = useState(0);
   const [timeInMonthTrend, setTimeInMonthTrend] = useState(0);
@@ -82,14 +84,17 @@ function Dashboard(props) {
     const middleSc = countScope('middle', usersMilestones);
     const seniorSc = countScope('senior', usersMilestones);
     setUsersJuniorScope(juniorSc);
+    setUsersMiddleScope(middleSc);
+    setUsersSeniorScope(seniorSc);
   }, [usersMilestones])
 
 
   function countScope(lvl, obj) {
-    console.log(lvl, obj)
     if (obj) {
-      const scope = obj?.find((el) => el.chapter === lvl).categories
-      return Object.values(scope).reduce((acc, el) => acc + el.length, 0)
+      const scope = obj?.find((el) => el[lvl])
+      if (scope) {
+        return Object.values(scope[lvl]).reduce((acc, el) => acc + el.length, 0)
+      }
     }
   }
   function createMonth() {
@@ -210,15 +215,15 @@ function Dashboard(props) {
           <h4>This month trend in comparison to previous:</h4>
           <div>{`${timeInMonthTrend.toFixed(0)}%`}</div>
           <h4>Average time studied in a day:</h4>
-          <div>{`${avgDayStudy.toFixed(1)}h`}</div>
+          <div>{`${avgDayStudy ? avgDayStudy.toFixed(1) : 0}h`}</div>
         </div>
         <h3>{'Your progress on Milestones:'}</h3>
         <h4>Junior</h4>
-        <CProgressBar doneFromScope={usersJuniorScope} allScope={juniorScope} />
+        <CProgressBar lvl={'junior'} doneFromScope={usersJuniorScope} allScope={juniorScope} />
         <h4>Middle</h4>
-        <CProgressBar doneFromScope={usersJuniorScope} allScope={middleScope} />
+        <CProgressBar lvl={'middle'} doneFromScope={usersMiddleScope} allScope={middleScope} />
         <h4>Senior</h4>
-        <CProgressBar doneFromScope={usersJuniorScope} allScope={seniorScope} />
+        <CProgressBar lvl={'senior'} doneFromScope={usersSeniorScope} allScope={seniorScope} />
       </div>
     );
   }

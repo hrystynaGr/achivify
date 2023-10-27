@@ -74,50 +74,42 @@ export const createUsersMilestones = async (data) => {
     try {
         const params = {
             "userid": data,
-            "milestones": {
-                "junior": {
-                    "categories": {
+            "milestones": [
+                {
+                    "junior": {
                         "common": [],
                         "JScore": [],
                         "functions": [],
                         "front-end": [],
                         "layout": [],
                         "react": [],
-                        "instruments": []
-                    },
-                    "bonus": {
-                        "back-end": []
-                    },
-                    "practice": []
+                        "instruments": [],
+                        "practice": []
+                    }
                 },
-                "middle": {
-                    "categories": {
+                {
+                    "middle": {
                         "common": [],
                         "JScore": [],
                         "functions": [],
                         "front-end": [],
                         "layout": [],
                         "react": [],
-                        "instruments": []
-                    },
-                    "bonus": {
-                        "back-end": []
-                    },
-                    "practice": []
+                        "instruments": [],
+                        "practice": []
+                    }
                 },
-                "senior": {
-                    "categories": {
+                {
+                    "senior": {
                         "common": [],
                         "JScore": [],
                         "front-end": [],
-                        "instruments": []
-                    },
-                    "bonus": {
-                        "back-end": []
-                    },
-                    "practice": []
+                        "instruments": [],
+                        "practice": []
+                    }
                 }
-            }
+            ],
+
         }
 
         const response = await fetch(`${configs.local_api}/usersMilestones`, {
@@ -157,7 +149,6 @@ export const loadUsersMilestones = async (userId) => {
 
 export const changeUserMilestones = async (componentInstance) => {
     try {
-        console.log('componentInstance?.userMilestones', componentInstance?.userMilestones)
         const data = {
             userid: componentInstance?.user?.id,
             milestones: componentInstance?.userMilestones

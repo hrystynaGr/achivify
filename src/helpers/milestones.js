@@ -4,7 +4,6 @@ export const milestonesLoad = async () => {
     try {
         const response = await fetch(`${configs.local_api}/milestones`);
         const milestones = await response.json();
-        console.log('milestonesfrom Load', milestones)
         return milestones;
 
         // componentInstance.setState({milestones: milestones})

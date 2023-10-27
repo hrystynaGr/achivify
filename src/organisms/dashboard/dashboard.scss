@@ -1,9 +1,16 @@
 .chart-wrap {
     width: 90vw;
+    display: flex;
+    align-self: center;
 }
 
 .month {
     display: flex;
+}
+
+.Dashboard {
+    display: flex;
+    flex-direction: column;
 }
 
 .Dashboard>h3 {

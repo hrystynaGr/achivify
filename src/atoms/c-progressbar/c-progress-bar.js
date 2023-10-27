@@ -5,7 +5,7 @@ import './c-progress-bar.scss';
 
 function CProgressBar(props) {
     const { theme } = useContext(AchivifyContext)
-    const { doneFromScope, allScope } = props;
+    const { doneFromScope, allScope, lvl } = props;
 
     useEffect(() => {
         calculateDone();
@@ -15,17 +15,16 @@ function CProgressBar(props) {
 
     function calculatePercentDone() {
         const percent = ((doneFromScope * 100) / allScope).toFixed(0);
-        return `${percent}%`
-    }
-
-    function calculateDone() {
-        const percent = ((doneFromScope * 100) / allScope).toFixed(0);
-        document.querySelector('.doneLine').style.width = `${percent}%`
         return percent;
     }
 
+    function calculateDone() {
+        const percent = calculatePercentDone();
+        document.querySelector(`.doneLine_${lvl}`).style.width = `${percent}%`
+    }
+
     function animate() {
-        document.querySelector('.doneLine').animate([
+        document.querySelector(`.doneLine_${lvl}`).animate([
             {
                 width: 0,
             },
@@ -38,10 +37,10 @@ function CProgressBar(props) {
     }
 
     return (
-        <div className={`CProgressbar`} theme={theme}>
+        <div className={`CProgressbar ${lvl}`} theme={theme}>
             <div className="wholeLine">
-                <div className="doneLine"></div>
-                <div className="percent">{calculatePercentDone()}</div>
+                <div className={`doneLine_${lvl} doneLine`}></div>
+                <div className="percent">{`${calculatePercentDone()}%`}</div>
             </div>
         </div>
     );

@@ -24,4 +24,27 @@ p {
     margin: var(--margin) 0;
 }
 
-.category-container {}
+.categ_values {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Adjust the 20% as needed */
+    grid-auto-rows: 1fr;
+    grid-column-gap: 2em;
+}
+
+.lvl_name {
+    color: var(--accent-color-0);
+    text-transform: capitalize;
+    margin-top: 2em;
+}
+
+.catg_name {
+    text-transform: capitalize;
+    text-align: left;
+    margin-bottom: 0em;
+    margin-top: 2em;
+}
+
+.lvl_wrap {
+    border: 1px solid var(--secondary-color);
+    padding: var(--margin);
+}
