@@ -16,14 +16,10 @@ Achivify allows you to create an account and input the number of hours you've de
 3. *Track Your Progress:* Mark the questions you've learned from the "300 JavaScript Developer Questions."
 4. *Explore Your Dashboard:* Check out your personalized dashboard to see various metrics about your studies. 📊
 
-Let's make learning and achieving fun and rewarding with Achivify! 🌟📖
 
-Happy Learning! 🚀🧠
-
-**How to set it up?**
-
-### Setting up a json server 
+## How to set it up?
+**Setting up a json server**
 `npx json-server --watch db.json --port 8000`
 
-### Starting a projects
+**Starting a projects**
 `npm start`
