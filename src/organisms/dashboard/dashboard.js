@@ -33,6 +33,8 @@ function Dashboard(props) {
   const [timeInMonth, setTimeInMonth] = useState(0);
   const [timeInMonthTrend, setTimeInMonthTrend] = useState(0);
   const [avgDayStudy, setAvgDayStudy] = useState(0);
+  const [usersCleanCodeScope, setUsersCleanCodeScope] = useState(0);
+  const [cleanCodeScope, setCleanCodeScope] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,18 +76,22 @@ function Dashboard(props) {
     const juniorSc = countScope('junior', milestones);
     const middleSc = countScope('middle', milestones);
     const seniorSc = countScope('senior', milestones);
+    const cleanCodeSc = countScope('cleanCode', milestones);
     setJuniorScope(juniorSc);
     setMiddleScope(middleSc);
     setSeniorScope(seniorSc);
+    setCleanCodeScope(cleanCodeSc);
   }, [milestones])
 
   useEffect(() => {
     const juniorSc = countScope('junior', usersMilestones);
     const middleSc = countScope('middle', usersMilestones);
     const seniorSc = countScope('senior', usersMilestones);
+    const cleanCodeSc = countScope('cleanCode', usersMilestones);
     setUsersJuniorScope(juniorSc);
     setUsersMiddleScope(middleSc);
     setUsersSeniorScope(seniorSc);
+    setUsersCleanCodeScope(cleanCodeSc);
   }, [usersMilestones])
 
 
@@ -165,7 +171,7 @@ function Dashboard(props) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Time studied in a month',
+      label: 'Time studied in a day in minutes',
       data: dataset,
       backgroundColor: [
         'rgba(238,108,77,0.2)',
@@ -208,7 +214,7 @@ function Dashboard(props) {
               onClick={() => setMonth(mth)} />
           )}
         </div>
-        <h3>Your trends:</h3>
+        <h3 className="progress_title">Your trends:</h3>
         <div className='trends'>
           <h4>Time Studied in a moonth:</h4>
           <div>{`${timeInMonth.toFixed(0)}h`}</div>
@@ -217,13 +223,19 @@ function Dashboard(props) {
           <h4>Average time studied in a day:</h4>
           <div>{`${avgDayStudy ? avgDayStudy.toFixed(1) : 0}h`}</div>
         </div>
-        <h3>{'Your progress on Milestones:'}</h3>
-        <h4>Junior</h4>
-        <CProgressBar lvl={'junior'} doneFromScope={usersJuniorScope} allScope={juniorScope} />
-        <h4>Middle</h4>
-        <CProgressBar lvl={'middle'} doneFromScope={usersMiddleScope} allScope={middleScope} />
-        <h4>Senior</h4>
-        <CProgressBar lvl={'senior'} doneFromScope={usersSeniorScope} allScope={seniorScope} />
+        <h3 className="progress_title">{'Your progress on 300 JS questions:'}</h3>
+        <div className="progress_wrap">
+          <h4>Junior</h4>
+          <CProgressBar lvl={'junior'} doneFromScope={usersJuniorScope} allScope={juniorScope} />
+          <h4>Middle</h4>
+          <CProgressBar lvl={'middle'} doneFromScope={usersMiddleScope} allScope={middleScope} />
+          <h4>Senior</h4>
+          <CProgressBar lvl={'senior'} doneFromScope={usersSeniorScope} allScope={seniorScope} />
+        </div >
+        <h3 className="progress_title">{'Your progress on Clean Code Book:'}</h3>
+        <div className="progress_wrap">
+          <CProgressBar lvl={'clean-code'} doneFromScope={usersCleanCodeScope} allScope={cleanCodeScope} />
+        </div>
       </div>
     );
   }

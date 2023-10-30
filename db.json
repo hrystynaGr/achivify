@@ -8,165 +8,11 @@
       "theme": "light"
     },
     {
-      "id": 1,
-      "name": "John Smith",
-      "email": "john.smith@example.com",
-      "password": "password1",
-      "theme": "light"
-    },
-    {
-      "id": 2,
-      "name": "Emily Johnson",
-      "email": "emily.johnson@example.com",
-      "password": "password2",
-      "theme": "dark"
-    },
-    {
-      "id": 3,
-      "name": "Michael Davis",
-      "email": "michael.davis@example.com",
-      "password": "password3",
-      "theme": "light"
-    },
-    {
-      "id": 4,
-      "name": "Sarah Brown",
-      "email": "sarah.brown@example.com",
-      "password": "password4",
-      "theme": "dark"
-    },
-    {
-      "id": 5,
-      "name": "David Wilson",
-      "email": "david.wilson@example.com",
-      "password": "password5",
-      "theme": "light"
-    },
-    {
-      "name": "Peony",
-      "email": "peony@examplemail.com",
-      "theme": "dark",
-      "password": "peony123",
-      "id": 201
-    },
-    {
-      "name": "Cactus",
-      "email": "cactus@juise.com",
-      "theme": "dark",
-      "password": "cactus123",
-      "id": 202
-    },
-    {
-      "name": "cactus",
-      "email": "cactus@juise.com",
-      "theme": "dark",
-      "password": "cactus1",
-      "id": 203
-    },
-    {
-      "name": "2",
+      "name": "Wild Tiger",
       "email": "2",
       "theme": "dark",
       "password": "2",
-      "id": 204
-    },
-    {
-      "name": "User Whale",
-      "email": "whale@mail.wh",
-      "theme": "dark",
-      "password": "whale1234",
-      "id": 205
-    },
-    {
-      "name": "happy-goat",
-      "email": "happygoat@gmail.com",
-      "theme": "dark",
-      "password": "goat123",
-      "id": 206
-    },
-    {
-      "name": "test",
-      "email": "test100@mail.com",
-      "theme": "dark",
-      "password": "test100",
-      "id": 207
-    },
-    {
-      "name": "miles",
-      "email": "miles@mail.com",
-      "theme": "dark",
-      "password": "miles123",
-      "id": 208
-    },
-    {
-      "name": "mile",
-      "email": "mile@mail.com",
-      "theme": "dark",
-      "password": "passs123",
-      "id": 209
-    },
-    {
-      "name": "3",
-      "email": "3",
-      "theme": "dark",
-      "password": "3",
-      "id": 210
-    },
-    {
-      "name": "4",
-      "email": "4",
-      "theme": "dark",
-      "password": "4",
-      "id": 211
-    },
-    {
-      "name": "5",
-      "email": "5",
-      "theme": "dark",
-      "password": "5",
-      "id": 212
-    },
-    {
-      "name": "6",
-      "email": "6",
-      "theme": "dark",
-      "password": "6",
-      "id": 213
-    },
-    {
-      "name": "8",
-      "email": "8",
-      "theme": "dark",
-      "password": "8",
-      "id": 214
-    },
-    {
-      "name": "lukasik",
-      "email": "lukasik@mail.com",
-      "theme": "dark",
-      "password": "lukasik123",
-      "id": 215
-    },
-    {
-      "name": "newAcc",
-      "email": "newapp@email.com",
-      "theme": "dark",
-      "password": "heyyou",
-      "id": 216
-    },
-    {
-      "name": "lukyuser",
-      "email": "lukyuser@mail.com",
-      "theme": "dark",
-      "password": "lukyuser123",
-      "id": 217
-    },
-    {
-      "name": "55",
-      "email": "55",
-      "theme": "dark",
-      "password": "55",
-      "id": 218
+      "id": 201
     }
   ],
   "milestones": [
@@ -456,6 +302,31 @@
           45
         ]
       }
+    },
+    {
+      "id": 103,
+      "name": "cleanCode",
+      "cleanCode": {
+        "chapters": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      }
     }
   ],
   "usersMilestones": [
@@ -529,118 +400,34 @@
             "instruments": [],
             "practice": []
           }
+        },
+        {
+          "cleanCode": {
+            "chapters": [
+              1,
+              2,
+              4,
+              7,
+              10,
+              13,
+              16,
+              5,
+              8
+            ]
+          }
         }
       ],
       "id": 13
     },
     {
-      "userid": 204,
-      "milestones": [
-        {
-          "junior": {
-            "common": [
-              9
-            ],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
-        },
-        {
-          "middle": {
-            "common": [],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
-        },
-        {
-          "senior": {
-            "common": [
-              1,
-              6,
-              7
-            ],
-            "JScore": [],
-            "front-end": [
-              12,
-              16
-            ],
-            "instruments": [
-              38
-            ],
-            "practice": [
-              44,
-              43
-            ]
-          }
-        }
-      ],
-      "id": 14
-    },
-    {
-      "userid": 216,
-      "milestones": [
-        {
-          "junior": {
-            "common": [
-              9,
-              10
-            ],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
-        },
-        {
-          "middle": {
-            "common": [],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
-        },
-        {
-          "senior": {
-            "common": [],
-            "JScore": [],
-            "front-end": [],
-            "instruments": [],
-            "practice": []
-          }
-        }
-      ],
-      "id": 15
-    },
-    {
-      "userid": 217,
+      "userid": 201,
       "milestones": [
         {
           "junior": {
             "common": [
               1,
               2,
-              3,
-              4,
-              5,
-              6,
-              7
+              5
             ],
             "JScore": [],
             "functions": [],
@@ -671,48 +458,14 @@
             "instruments": [],
             "practice": []
           }
-        }
-      ],
-      "id": 16
-    },
-    {
-      "userid": 218,
-      "milestones": [
-        {
-          "junior": {
-            "common": [],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
         },
         {
-          "middle": {
-            "common": [],
-            "JScore": [],
-            "functions": [],
-            "front-end": [],
-            "layout": [],
-            "react": [],
-            "instruments": [],
-            "practice": []
-          }
-        },
-        {
-          "senior": {
-            "common": [],
-            "JScore": [],
-            "front-end": [],
-            "instruments": [],
-            "practice": []
+          "cleanCode": {
+            "chapters": []
           }
         }
       ],
-      "id": 17
+      "id": 14
     }
   ],
   "timeStudied": [
@@ -793,53 +546,24 @@
         },
         {
           "date": "27/10/2023",
-          "hoursStudied": "01:15"
+          "hoursStudied": "04:32"
+        },
+        {
+          "date": "30/10/2023",
+          "hoursStudied": "01:01"
         }
       ],
       "id": 6
     },
     {
-      "userid": 204,
+      "userid": 201,
       "studies": [
         {
-          "date": "09/10/2023",
-          "hoursStudied": "06:05"
-        },
-        {
-          "date": "09/10/2023",
-          "hoursStudied": "04:04"
-        },
-        {
-          "date": "27/10/2023",
-          "hoursStudied": "01:00"
+          "date": "30/10/2023",
+          "hoursStudied": "03:02"
         }
       ],
       "id": 7
-    },
-    {
-      "userid": 216,
-      "studies": [
-        {
-          "date": "27/10/2023",
-          "hoursStudied": "02:02"
-        }
-      ],
-      "id": 8
-    },
-    {
-      "userid": 217,
-      "studies": [
-        {
-          "date": "27/10/2023",
-          "hoursStudied": "02:20"
-        }
-      ],
-      "id": 9
-    },
-    {
-      "userid": 218,
-      "studies": [],
-      "id": 10
     }
   ],
   "awards": [

@@ -22,7 +22,7 @@ function Login() {
   };
 
   const loggingIn = async () => {
-    logIn({ state: { email, password } }); // Pass email and password as an object
+    logIn({ email, password}); // Pass email and password as an object
   };
 
   return (

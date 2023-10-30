@@ -23,7 +23,7 @@ function SignIn() {
   };
 
   const handleSignIn = () => {
-    signIn({ state: { name, email, password } });
+    signIn({ name, email, password });
   };
 
   return (
