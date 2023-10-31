@@ -1,1 +1,19 @@
-node_modules
+#Folders
+node_modules/
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+
+# Editor/IDE specific
+.vscode/
+
+# Others
+yarn-debug.log*
+yarn-error.log*
+
