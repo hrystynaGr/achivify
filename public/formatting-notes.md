@@ -1,15 +1,15 @@
 ### Organizing imports
 
 1. 
-    a. React import;
-    b. Imports from all *react related* libraries.
+    A.  React import;
+    A.  Imports from all *react related* libraries.
 2. Empty line
 3. Imports from all not related to react exsternal libraries.
 4. Empty line
 5. Imports of:
-    a. `.css` files;
-    b. `context` files;
-    c. Import of functions, helper functions, outer classes;
+    A.  `.css` files;
+    A.  `context` files;
+    A.  Import of functions, helper functions, outer classes;
 6. Empty line
 7. Imports of components, images.
 
