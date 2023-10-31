@@ -84,9 +84,8 @@
 footer {
   display: flex;
   justify-content: space-between;
-  padding: var(--margin) 2em;
-  margin: 0 -var(--margin);
-  font-size: 1em;
+  padding: var(--margin);
+  margin: 0;
   color: var(--primary-text-hue);
   opacity: 0.8;
   border-top: 1px solid var(--primary-color-hue);
@@ -132,6 +131,10 @@ footer {
 
   .burger-mobile>path {
     stroke: var(--primary-color-hue);
+  }
+
+  footer {
+    padding: var(--margin);
   }
 }
 
