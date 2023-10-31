@@ -1,4 +1,5 @@
 @import '/src/styles/shared.scss';
+@import '/src/styles/breakpoints.scss';
 
 .App {
   display: flex;
@@ -15,12 +16,27 @@
   background-color: var(--primary-color-0);
 }
 
-.menue {
-  display: flex;
+.menu {
   align-items: flex-end;
   justify-content: flex-start;
   width: 100%;
   margin-left: var(--margin);
+}
+
+.burger-mobile {
+  display: none;
+}
+
+.menu.visible {
+  display: flex;
+}
+
+.menu.not-visible {
+  display: none;
+}
+
+.menu-mobile-items {
+  display: none;
 }
 
 .CButton.logout {
@@ -75,6 +91,40 @@ footer {
   opacity: 0.8;
   border-top: 1px solid var(--primary-color-hue);
   background-color: var(--primary-color-0);
+}
+
+@media (max-width: $mobile) {
+  .App-logo {
+    margin-bottom: var(--margin);
+  }
+
+  .menu.visible {
+    display: none;
+  }
+
+  .menu-mobile-items.closed {
+    display: none;
+  }
+
+  .menu-mobile-items.open {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color-0);
+  }
+
+  .switch-and-mobile-menu {
+    display: flex;
+  }
+
+  .burger-mobile {
+    display: flex;
+    height: 35px;
+    width: 35px;
+    margin: var(--margin);
+  }
+  .burger-mobile>path {
+    stroke: var(--primary-color-hue);
+  }
 }
 
 @keyframes App-logo-spin {

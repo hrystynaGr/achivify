@@ -13,11 +13,13 @@ import ConfigsTime from './organisms/configs-time/configs-time';
 import CMenuItem from './atoms/c-menu-item/c-menu-item';
 import { userLoad, isLoggedIn, logOut } from './helpers/user'
 import { isObjEmpty } from './helpers/shared';
+import { ReactComponent as BurgerMenuSVG } from '../src/burger-menu.svg'
 
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState('');
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [mobileMenuState, setMobileMenuState] = useState('closed');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +60,16 @@ function App() {
     window.location.href = '/login';
   };
 
+  const changeMobileMenuState = () => {
+    console.log('changeMobileMenuState', mobileMenuState)
+    if (mobileMenuState === 'closed') {
+      setMobileMenuState('open');
+    }
+    else {
+      setMobileMenuState('closed');
+    }
+  }
+
   if (isObjEmpty(user)) {
     return null;
   } else {
@@ -83,8 +95,11 @@ function App() {
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>
           <header className="App-header">
-            <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
-            <div className="menue">
+            <div className='switch-and-mobile-menu'>
+              <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
+              <BurgerMenuSVG onClick={() => changeMobileMenuState()} className={`burger-mobile ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`} />
+            </div>
+            <div className={`menu ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`}>
               <CMenuItem innerText={dashboard} link={`/dashboard`} />
               <CMenuItem innerText={configs} link={`/configs`} />
               <CMenuItem innerText={time} link={`/time`} />
@@ -93,6 +108,11 @@ function App() {
               {button}
             </div>
           </header>
+          <div className={`menu-mobile-items ${mobileMenuState}`}>
+            <CMenuItem innerText={dashboard} link={`/dashboard`} />
+            <CMenuItem innerText={configs} link={`/configs`} />
+            <CMenuItem innerText={time} link={`/time`} />
+          </div>
           <div className='Main-content'>
             <BrowserRouter>
               <Routes>

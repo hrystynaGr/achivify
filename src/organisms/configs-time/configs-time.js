@@ -9,7 +9,7 @@ import { formattedToday } from '../../helpers/shared'
 import configs from '../../config';
 
 function ConfigsTime() {
-    const successMsg = 'You have succesfully create a new Entry for the time Studied!';
+    const successMsg = 'The entry was added!';
     const { user, theme } = useContext(AchivifyContext);
     const [timeStudied, setTimeStudied] = useState([]);
     const [timeToday, setTimeToday] = useState('');

@@ -8,6 +8,12 @@
     // --border-thik: 2px solid var(--secondary-color-hue);
 }
 
+@media (max-width: 600px) {
+    :root {
+        --margin: .7em;
+    }
+}
+
 [theme='light'] {
     --primary-color: lightpink;
     --primary-color-0: #ff99ab;

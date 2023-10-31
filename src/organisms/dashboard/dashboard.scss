@@ -1,3 +1,6 @@
+@import '/src/styles/shared.scss';
+@import '/src/styles/breakpoints.scss';
+
 .chart-wrap {
     width: 90vw;
     display: flex;
@@ -6,6 +9,19 @@
 
 .month {
     display: flex;
+    overflow-x: scroll;
+}
+
+.month::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.month {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .Dashboard {
@@ -45,4 +61,10 @@
 
 .progress_title {
     margin-top: 2em;
+}
+
+@media (max-width: $mobile) {
+    .chart-wrap {
+        width: 99vw;
+    }
 }
