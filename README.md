@@ -22,4 +22,4 @@ Achivify allows you to create an account and input the number of hours you've de
 `npx json-server --watch db.json --port 8000`
 
 **Starting a projects**
-`npm start`
+`npm start` or `yarn start`
