@@ -1,12 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
+
+// eslint-disable-next-line
+import Chart from 'chart.js/auto';
+import { Bar } from 'react-chartjs-2';
+
+import './dashboard.scss';
 import { AchivifyContext } from '../../MyContext';
 import { milestonesLoad } from '../../helpers/milestones';
 import { loadUsersTimeStudied, loadUsersMilestones } from '../../helpers/user';
-import { parseTimeToMinutes, dayFromDate, isObjEmpty, monthFromDate, yearFromDate, formattedToday } from '../../helpers/shared';
-import './dashboard.scss';
-import { Bar } from 'react-chartjs-2';
-// eslint-disable-next-line
-import Chart from 'chart.js/auto';
+import {
+  parseTimeToMinutes,
+  dayFromDate,
+  isObjEmpty,
+  monthFromDate,
+  yearFromDate,
+  formattedToday
+} from '../../helpers/shared';
+
 import CButton from '../../atoms/c-button/c-button';
 import CProgressBar from '../../atoms/c-progressbar/c-progress-bar';
 

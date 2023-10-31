@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import './App.scss';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom';
 
+import './App.scss';
 import { AchivifyContext } from './MyContext';
+import {
+  userLoad,
+  isLoggedIn,
+  logOut
+} from './helpers/user'
+import { isObjEmpty } from './helpers/shared';
+
 import Login from './molecules/login/login';
 import Dashboard from './organisms/dashboard/dashboard';
 import Configs from './organisms/configs/configs';
@@ -11,8 +23,6 @@ import CSwitch from './atoms/c-switch/c-switch';
 import SignIn from './molecules/sign-in/sign-in';
 import ConfigsTime from './organisms/configs-time/configs-time';
 import CMenuItem from './atoms/c-menu-item/c-menu-item';
-import { userLoad, isLoggedIn, logOut } from './helpers/user'
-import { isObjEmpty } from './helpers/shared';
 import { ReactComponent as BurgerMenuSVG } from '../src/burger-menu.svg'
 
 function App() {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { signIn } from '../../helpers/user';
+
 import './sign-in.scss';
+import { signIn } from '../../helpers/user';
+
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
 import { ReactComponent as GearSVG } from '../../gear.svg'

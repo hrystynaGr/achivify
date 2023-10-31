@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import './configs.scss';
 import { AchivifyContext } from '../../MyContext';
-import CInput from '../../atoms/c-input/c-input';
 import { milestonesLoad } from '../../helpers/milestones';
 import { loadUsersMilestones, changeUserMilestones } from '../../helpers/user';
+
+import CInput from '../../atoms/c-input/c-input';
 
 function Configs() {
   const { theme, user } = useContext(AchivifyContext);

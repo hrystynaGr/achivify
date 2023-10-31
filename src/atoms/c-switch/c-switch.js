@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { AchivifyContext } from '../../MyContext';
+
 import './c-switch.scss';
+import { AchivifyContext } from '../../MyContext';
+
 
 const CSwitch = (props) => {
     const { theme } = useContext(AchivifyContext)

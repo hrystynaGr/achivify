@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import './configs-time.scss';
 import { AchivifyContext } from '../../MyContext';
+import { loadUsersTimeStudied, updateEntryForUserInTimeStudied } from '../../helpers/user'
+import { formattedToday } from '../../helpers/shared'
+
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
 import CPopUp from '../../atoms/c-pop-up/c-pop-up';
-import { loadUsersTimeStudied, updateEntryForUserInTimeStudied } from '../../helpers/user'
-import { formattedToday } from '../../helpers/shared'
-import configs from '../../config';
 
 function ConfigsTime() {
     const successMsg = 'The entry was added!';
@@ -55,7 +56,7 @@ function ConfigsTime() {
 
     const addNewTimeEntry = (today) => {
         let indexOfExistingEntry = timeStudied.findIndex((el) => el.date === today.date);
-        if(indexOfExistingEntry > 0) {
+        if (indexOfExistingEntry > 0) {
             timeStudied[indexOfExistingEntry].hoursStudied = today.hoursStudied;
             return timeStudied;
         }

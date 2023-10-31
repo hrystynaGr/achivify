@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
-import { AchivifyContext } from '../../MyContext';
 import './c-progress-bar.scss';
+import { AchivifyContext } from '../../MyContext';
 
 function CProgressBar(props) {
     const { theme } = useContext(AchivifyContext)

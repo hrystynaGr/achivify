@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-//didn'k work, can't figure our why
-// import { redirect } from 'react-router'
+
 import './login.scss';
 import { AchivifyContext } from '../../MyContext';
+import { logIn } from '../../helpers/user';
+
 import { ReactComponent as GearSVG } from '../../gear.svg'
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';
-import { logIn } from '../../helpers/user';
 
 function Login() {
   const { theme } = useContext(AchivifyContext);
@@ -22,7 +22,7 @@ function Login() {
   };
 
   const loggingIn = async () => {
-    logIn({ email, password}); // Pass email and password as an object
+    logIn({ email, password }); // Pass email and password as an object
   };
 
   return (

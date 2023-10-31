@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
-import { AchivifyContext } from '../../MyContext';
 import './c-button.scss';
+import { AchivifyContext } from '../../MyContext';
 
 function CButton(props) {
     const { theme } = useContext(AchivifyContext)

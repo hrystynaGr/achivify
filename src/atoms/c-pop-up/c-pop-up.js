@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, ReactComponent, useState } from 'react';
-import { AchivifyContext } from '../../MyContext';
+
 import './c-pop-up.scss';
+import { AchivifyContext } from '../../MyContext';
+
 import { ReactComponent as CloseSVG } from '../../cross.svg'
 
 function CPopUp(props) {

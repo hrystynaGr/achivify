@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+
 import './c-menu-item.scss';
 import { AchivifyContext } from '../../MyContext';
 
 function CMenuItem(props) {
     const { theme } = useContext(AchivifyContext);
-    const { innerText, link} = props;
+    const { innerText, link } = props;
 
     function isActive() {
         return link === window.location.pathname
