@@ -117,11 +117,19 @@ footer {
   }
 
   .burger-mobile {
-    display: flex;
     height: 35px;
     width: 35px;
     margin: var(--margin);
   }
+
+  .burger-mobile.visible {
+    display: flex;
+  }
+
+  .burger-mobile.not-visible {
+    display: none;
+  }
+
   .burger-mobile>path {
     stroke: var(--primary-color-hue);
   }
