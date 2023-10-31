@@ -20,11 +20,11 @@ function CProgressBar(props) {
 
     function calculateDone() {
         const percent = calculatePercentDone();
-        document.querySelector(`.doneLine_${lvl}`).style.width = `${percent}%`
+        document.querySelector(`.done-line_${lvl}`).style.width = `${percent}%`
     }
 
     function animate() {
-        document.querySelector(`.doneLine_${lvl}`).animate([
+        document.querySelector(`.done-line_${lvl}`).animate([
             {
                 width: 0,
             },
@@ -38,8 +38,8 @@ function CProgressBar(props) {
 
     return (
         <div className={`CProgressbar ${lvl}`} theme={theme}>
-            <div className="wholeLine">
-                <div className={`doneLine_${lvl} doneLine`}></div>
+            <div className="whole-line">
+                <div className={`done-line_${lvl} done-line`}></div>
                 <div className="percent">{`${calculatePercentDone()}%`}</div>
             </div>
         </div>

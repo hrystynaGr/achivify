@@ -2,42 +2,43 @@
 @import '/src/styles/breakpoints.scss';
 
 .CPopUp {
-    min-height: 30px;
-    max-width: 300px;
-    padding: .7em;
-    margin: var(--margin);
     z-index: 10;
+    // become flex when element is active
     display: none;
     position: fixed;
     bottom: 0;
     right: 0;
-    text-align: left;
     justify-content: end;
     align-items: center;
-    background-color: var(--primary-color-0);
+    min-height: 30px;
+    max-width: 300px;
+    padding: .7em;
+    margin: var(--margin);
     border-radius: var(--border-radius);
-}
+    background-color: var(--primary-color-0);
+    text-align: left;
 
-.warning {
-    border: 1px solid var(--warning);
-    color: var(--warning);
-}
+    &>svg {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+    }
 
-.info {
-    border: 1px solid var(--info);
-    color: var(--info);
-}
+    &.success {
+        @include border(var(--success));
+        color: var(--success);
+    }
 
-.success {
-    border: 1px solid var(--success);
-    color: var(--success);
-}
+    &.warning {
+        @include border(var(--warning));
+        color: var(--warning);
+    }
 
-.CPopUp>svg {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+    &.info {
+        @include border(var(--info));
+        color: var(--info);
+    }
 }

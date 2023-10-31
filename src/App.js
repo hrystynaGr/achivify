@@ -104,10 +104,17 @@ function App() {
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>
-          <header className="App-header">
-            <div className='switch-and-mobile-menu'>
-              <CSwitch keyName="theme" values={['light', 'dark']} grabTheme={grabTheme} />
-              <BurgerMenuSVG onClick={() => changeMobileMenuState()} className={`burger-mobile ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`} />
+          <header className="header">
+            <div className='switch-and-burger'>
+              <CSwitch
+                keyName="theme"
+                values={['light', 'dark']}
+                grabTheme={grabTheme}
+              />
+              <BurgerMenuSVG
+                className={`burger ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`}
+                onClick={() => changeMobileMenuState()}
+              />
             </div>
             <div className={`menu ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`}>
               <CMenuItem innerText={dashboard} link={`/dashboard`} />
@@ -118,12 +125,12 @@ function App() {
               {button}
             </div>
           </header>
-          <div className={`menu-mobile-items ${mobileMenuState}`}>
+          <div className={`mobile-menu ${mobileMenuState}`}>
             <CMenuItem innerText={dashboard} link={`/dashboard`} />
             <CMenuItem innerText={configs} link={`/configs`} />
             <CMenuItem innerText={time} link={`/time`} />
           </div>
-          <div className='Main-content'>
+          <div className='main-content'>
             <BrowserRouter>
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />

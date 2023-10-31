@@ -74,12 +74,12 @@ function Configs() {
       <div className="list">
         {Object.values(milestones).map((milestone) => (
           <div key={milestone.name}>
-            <h2 className="lvl_name">{milestone.name}</h2>
-            <div className="lvl_wrap" key={milestone.name}>
+            <h2 className="lvl-name">{milestone.name}</h2>
+            <div className="lvl-wrap" key={milestone.name}>
               {Object.entries(milestone[milestone.name]).map(([key, value]) => (
                 <div key={key} className='category-container'>
-                  <h4 className="catg_name">{key}</h4>
-                  <div className={`categ_values`}>
+                  <h4 className="catg-name">{key}</h4>
+                  <div className={`categ-values`}>
                     {value.map((e) => (<CInput
                       key={key + e}
                       type="checkbox"

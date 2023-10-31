@@ -2,64 +2,60 @@
 @import '/src/styles/breakpoints.scss';
 
 .chart-wrap {
-    width: 90vw;
     display: flex;
     align-self: center;
+    width: 90vw;
 }
 
 .month {
     display: flex;
     overflow-x: scroll;
-}
-
-.month::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.month {
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
+
     /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .Dashboard {
     display: flex;
     flex-direction: column;
+
+    &>h3 {
+        margin-top: 2em;
+    }
+
+    & .trends {
+        grid-template-rows: 1fr 1fr;
+        grid-auto-flow: column;
+        padding: var(--padding);
+        @include border(var(--secondary-color));
+
+        &>h4 {
+            margin: 0;
+        }
+
+        &>div {
+            padding-top: 0;
+            font-weight: 700;
+            color: var(--accent-color-0);
+        }
+
+        &>* {
+            padding: var(--margin);
+        }
+    }
 }
 
-.Dashboard>h3 {
-    margin-top: 2em;
-}
-
-.trends {
-    grid-template-rows: 1fr 1fr;
-    grid-auto-flow: column;
-    border: 1px solid var(--secondary-color);
+.progress-wrap {
     padding: var(--padding);
-}
-
-.trends>h4 {
-    margin: 0;
-}
-
-.trends>* {
-    padding: var(--margin);
-}
-
-.trends>div {
-    padding-top: 0;
-    color: var(--accent-color-0);
-    font-weight: 700;
-}
-
-.progress_wrap {
     border-top: 1px solid var(--secondary-color);
-    padding: var(--padding);
 }
 
-.progress_title {
+.progress-title {
     margin-top: 2em;
 }
 

@@ -7,28 +7,28 @@
     margin-right: var(--margin);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     color: var(--accent-text);
-}
 
-.CMenuItem.active {
-    background-color: var(--primary-color);
-}
+    &.active {
+        background-color: var(--primary-color);
+    }
 
-.CMenuItem>a {
-    color: var(--primary-text);
-    text-decoration: none;
+    &>a {
+        color: var(--primary-text);
+        text-decoration: none;
+    }
 }
 
 @media (max-width: $mobile) {
     .CMenuItem {
         margin-right: 0;
         border-radius: 0;
-    }
 
-    .CMenuItem.active {
-        background-color: var(--primary-color-0);
-    }
+        &.active {
+            background-color: var(--primary-color-0);
 
-    .CMenuItem.active>a {
-        color: var(--accent-color-0);
+            &>a {
+                color: var(--accent-color-0);
+            }
+        }
     }
 }

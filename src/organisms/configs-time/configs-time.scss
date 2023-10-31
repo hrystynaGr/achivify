@@ -3,16 +3,16 @@
 
 
 .ConfigsTime {
-    max-width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 70%;
+
+    & label {
+        --c-label-min-width: none;
+    }
 }
 
 #time {
     width: 70%;
-}
-
-.ConfigsTime label {
-    --c-label-min-width: none;
 }

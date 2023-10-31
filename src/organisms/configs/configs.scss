@@ -2,9 +2,19 @@
 @import '/src/styles/breakpoints.scss';
 
 .Configs {
-    padding: var(--padding);
     max-width: 70%;
+    padding: var(--padding);
+
+    &.CInput {
+        margin-bottom: 0;
+        border-bottom: var(--border-thin);
+
+        &>label {
+            margin: var(--margin) 0;
+        }
+    }
 }
+
 h2 {
     display: flex;
     justify-content: center;
@@ -17,35 +27,25 @@ p {
     font-style: italic;
 }
 
-.Configs .CInput {
-    border-bottom: var(--border-thin);
-    margin-bottom: 0;
-}
-.Configs .CInput > label {
-    margin: var(--margin) 0;
-}
-
-.categ_values {
+.categ-values {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Adjust the 20% as needed */
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     grid-auto-rows: 1fr;
     grid-column-gap: 2em;
 }
 
-.lvl_name {
+.lvl-name {
+    margin-top: 2em;
     color: var(--accent-color-0);
     text-transform: capitalize;
-    margin-top: 2em;
 }
 
-.catg_name {
+.catg-name {
+    margin-top: 1em 0;
     text-transform: capitalize;
-    text-align: left;
-    margin-bottom: 0em;
-    margin-top: 2em;
 }
 
-.lvl_wrap {
-    border: 1px solid var(--secondary-color);
+.lvl-wrap {
     padding: var(--margin);
+    @include border(var(--secondary-color));
 }

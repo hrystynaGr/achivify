@@ -4,81 +4,59 @@
 .App {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  background-color: var(--primary-color);
   min-height: 100vh;
+  background-color: var(--primary-color);
   font-size: 22px;
-}
+  text-align: center;
 
-.App-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--primary-color-0);
-}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color-0);
 
-.menu {
-  align-items: flex-end;
-  justify-content: flex-start;
-  width: 100%;
-  margin-left: var(--margin);
-}
+    .menu {
+      align-items: flex-end;
+      justify-content: flex-start;
+      width: 100%;
+      margin-left: var(--margin);
 
-.burger-mobile {
-  display: none;
-}
+      &.visible {
+        display: flex;
+      }
 
-.menu.visible {
-  display: flex;
-}
+      &.not-visible {
+        display: none;
+      }
+    }
 
-.menu.not-visible {
-  display: none;
-}
+    .burger {
+      display: none;
+    }
 
-.menu-mobile-items {
-  display: none;
-}
+    .CButton.logout {
+      justify-content: flex-end;
+    }
 
-.CButton.logout {
-  justify-content: flex-end;
-}
-
-.topBar .svg-icon {
-  font-size: 1.5em;
-  animation: none;
-  margin: var(--margin);
-  margin-left: 0;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-
-.App-logo {
-  font-size: 20vmin;
-  pointer-events: none;
-  margin-bottom: .2em;
-  color: var(--accent-color-0)
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.Main-content {
-  margin: var(--margin);
-  background-color: var(--primary-color);
+.mobile-menu {
+  display: none;
+}
+
+.main-content {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: var(--margin);
+  background-color: var(--primary-color);
   color: var(--primary-text);
-}
 
-.Main-content>* {
-  width: 100%;
+  &>* {
+    width: 100%;
+  }
 }
 
 footer {
@@ -86,59 +64,65 @@ footer {
   justify-content: space-between;
   padding: var(--margin);
   margin: 0;
-  color: var(--primary-text-hue);
-  opacity: 0.8;
   border-top: 1px solid var(--primary-color-hue);
   background-color: var(--primary-color-0);
+  color: var(--primary-text-hue);
+  opacity: 0.8;
 }
 
 @media (max-width: $mobile) {
-  .App-logo {
-    margin-bottom: var(--margin);
-  }
+  .App {
+    .header {
+      .switch-and-burger {
+        display: flex;
 
-  .menu.visible {
-    display: none;
-  }
+        .burger {
+          height: 35px;
+          width: 35px;
+          margin: var(--margin);
 
-  .menu-mobile-items.closed {
-    display: none;
-  }
+          &.visible {
+            display: flex;
+          }
 
-  .menu-mobile-items.open {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-color-0);
-  }
+          &.not-visible {
+            display: none;
+          }
 
-  .switch-and-mobile-menu {
-    display: flex;
-  }
+          &>path {
+            stroke: var(--primary-color-hue);
+          }
+        }
+      }
 
-  .burger-mobile {
-    height: 35px;
-    width: 35px;
-    margin: var(--margin);
-  }
+      .menu {
 
-  .burger-mobile.visible {
-    display: flex;
-  }
+        &.visible,
+        &.not-visible {
+          display: none;
+        }
+      }
+    }
 
-  .burger-mobile.not-visible {
-    display: none;
-  }
+    .mobile-menu {
+      &.closed {
+        display: none;
+      }
 
-  .burger-mobile>path {
-    stroke: var(--primary-color-hue);
-  }
+      &.open {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--primary-color-0);
+      }
+    }
 
-  footer {
-    padding: var(--margin);
+    footer {
+      padding: var(--margin);
+    }
   }
 }
 
-@keyframes App-logo-spin {
+@keyframes gear-icon-spin {
   from {
     transform: rotate(0deg);
   }

@@ -5,13 +5,16 @@
     --warning: #ff0f0f;
     --info: #1E92F4;
     --success: #5cb85c;
-    // --border-thik: 2px solid var(--secondary-color-hue);
 }
 
 @media (max-width: 600px) {
     :root {
         --margin: .7em;
     }
+}
+
+@mixin border($color) {
+    border: 1px solid $color;
 }
 
 [theme='light'] {

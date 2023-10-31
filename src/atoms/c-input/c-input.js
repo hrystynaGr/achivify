@@ -3,9 +3,8 @@ import React, { useContext, useState } from 'react';
 import './c-input.scss';
 import { AchivifyContext } from '../../MyContext';
 
-function CInput(props) {
+function CInput({ label, type, id, func }) {
     const { theme } = useContext(AchivifyContext);
-    const { label, type, id, func } = props;
     const [messege, setMessege] = useState('');
 
     const handleChange = (event) => {

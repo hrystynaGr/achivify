@@ -224,7 +224,7 @@ function Dashboard(props) {
               onClick={() => setMonth(mth)} />
           )}
         </div>
-        <h3 className="progress_title">Your trends:</h3>
+        <h3 className="progress-title">Your trends:</h3>
         <div className='trends'>
           <h4>Time Studied in a moonth:</h4>
           <div>{`${timeInMonth.toFixed(0)}h`}</div>
@@ -233,8 +233,8 @@ function Dashboard(props) {
           <h4>Average time studied in a day:</h4>
           <div>{`${avgDayStudy ? avgDayStudy.toFixed(1) : 0}h`}</div>
         </div>
-        <h3 className="progress_title">{'Your progress on 300 JS questions:'}</h3>
-        <div className="progress_wrap">
+        <h3 className="progress-title">{'Your progress on 300 JS questions:'}</h3>
+        <div className="progress-wrap">
           <h4>Junior</h4>
           <CProgressBar lvl={'junior'} doneFromScope={usersJuniorScope} allScope={juniorScope} />
           <h4>Middle</h4>
@@ -242,8 +242,8 @@ function Dashboard(props) {
           <h4>Senior</h4>
           <CProgressBar lvl={'senior'} doneFromScope={usersSeniorScope} allScope={seniorScope} />
         </div >
-        <h3 className="progress_title">{'Your progress on Clean Code Book:'}</h3>
-        <div className="progress_wrap">
+        <h3 className="progress-title">{'Your progress on Clean Code Book:'}</h3>
+        <div className="progress-wrap">
           <CProgressBar lvl={'clean-code'} doneFromScope={usersCleanCodeScope} allScope={cleanCodeScope} />
         </div>
       </div>

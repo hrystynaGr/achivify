@@ -3,9 +3,8 @@ import React, { useContext } from 'react';
 import './c-button.scss';
 import { AchivifyContext } from '../../MyContext';
 
-function CButton(props) {
+function CButton({ styling, onClick, innerText }) {
     const { theme } = useContext(AchivifyContext)
-    const { styling, onClick, innerText } = props;
 
     return (
         <div className={`CButton ${styling}`} theme={theme}>

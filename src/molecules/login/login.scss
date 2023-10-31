@@ -3,10 +3,22 @@
 
 .Login {
     max-width: 40%;
+
+    .gear-icon {
+        margin-bottom: .2em;
+        font-size: 20vmin;
+        color: var(--accent-color-0);
+        pointer-events: none;
+        animation: gear-icon-spin infinite 20s linear;
+    }
 }
 
 @media (max-width: $mobile) {
     .Login {
         max-width: 90%;
+
+        .gear-icon {
+            margin-bottom: var(--margin);
+        }
     }
 }

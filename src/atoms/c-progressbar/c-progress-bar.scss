@@ -5,25 +5,24 @@
     margin: var(--margin);
 }
 
-.wholeLine {
-    width: 100%;
+.whole-line {
     position: relative;
-    background-color: var(--secondary-color);
+    width: 100%;
     border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
     overflow: hidden;
 }
 
-.doneLine {
+.done-line {
     height: 2em;
     background-color: var(--accent-color-0);
     animation: progress .5s ease-out;
-
 }
 
 .percent {
     position: absolute;
     left: calc(50% - 17px);
-    top: 0.4em;
+    top: .4em;
     color: var(--secondary-text);
 }
 
