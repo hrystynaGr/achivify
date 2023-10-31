@@ -85,15 +85,15 @@ function App() {
   } else {
     let button, configs, time, dashboard;
     if (loggedIn) {
-      button = <CButton onClick={() => logout()} styling="logout" innerText="logout" />;
+      button = <CButton onClick={() => logout()} type="outlined" innerText="logout" />;
       configs = 'Configs';
       time = 'Time';
       dashboard = 'Dashboard';
     } else {
       button = (
         <div style={{ display: 'flex' }}>
-          <CButton onClick={() => loginRedirect()} styling="login" innerText="login" />
-          <CButton onClick={() => signinRedirect()} styling="signin" innerText="signin" />
+          <CButton onClick={() => loginRedirect()} type="accent" innerText="login" />
+          <CButton onClick={() => signinRedirect()} type="outlined" innerText="signin" />
         </div>
       );
       configs = null;

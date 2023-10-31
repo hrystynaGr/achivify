@@ -31,8 +31,7 @@
     }
 }
 
-.logout-inner,
-.signin-inner {
+.outlined-inner {
     @include border(var(--secondary-color-hue));
     background: transparent;
     color: var(--secondary-color-hue);

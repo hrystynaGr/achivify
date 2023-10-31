@@ -218,7 +218,7 @@ function Dashboard(props) {
         <div className="month">
           {months.sort(function (a, b) { return b - a })?.map((mth) =>
             <CButton
-              styling={month === mth ? 'login' : 'logout'}
+              type={month === mth ? 'accent' : 'outlined'}
               innerText={monthNames[mth - 1]}
               key={mth}
               onClick={() => setMonth(mth)} />

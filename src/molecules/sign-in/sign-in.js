@@ -34,7 +34,7 @@ function SignIn() {
       <CInput type="name" func={handleNameChange} />
       <CInput type="email" func={handleMailChange} />
       <CInput type="password" func={handlePassChange} />
-      <CButton innerText="Submit" styling="submit" onClick={handleSignIn} />
+      <CButton innerText="Submit" type="accent" onClick={handleSignIn} />
     </div>
   );
 }

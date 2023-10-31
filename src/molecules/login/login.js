@@ -30,7 +30,7 @@ function Login() {
       <GearSVG />
       <CInput type="email" func={handleMailChange} />
       <CInput type="password" func={handlePassChange} />
-      <CButton innerText="Submit" styling="submit" onClick={loggingIn} />
+      <CButton innerText="Submit" type="accent" onClick={loggingIn} />
     </div>
   );
 }
