@@ -1,7 +1,7 @@
 @import '/src/styles/shared.scss';
 @import '/src/styles/breakpoints.scss';
 
-.switch {
+.CSwitch {
   position: relative;
   display: inline-block;
   min-width: 60px;
@@ -56,11 +56,9 @@ input {
 }
 
 .slider {
-  &.round {
-    border-radius: 34px;
-  }
+  border-radius: 34px;
 
-  &.round:before {
+  &:before {
     border-radius: 50%;
   }
 }

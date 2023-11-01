@@ -1,44 +1,72 @@
-import React, { useEffect, useContext } from 'react';
+import React, {
+    useContext,
+    useEffect,
+    useState
+} from 'react';
 
 import './c-switch.scss';
 import { AchivifyContext } from '../../MyContext';
 
 
-const CSwitch = (props) => {
-    const { theme } = useContext(AchivifyContext)
-    const { values, grabTheme, keyName } = props;
+const CSwitch = ({ whatToSwitch, valuesToSwitch, sendFromSwitchToParent }) => {
+    const [left_value, right_value] = valuesToSwitch;
+
+    const { theme } = useContext(AchivifyContext);
+    const [switcherDomElement, setSwitcherDomElement] = useState('');
 
     useEffect(() => {
-        const checkbox = document.getElementById('switcher');
-        if (theme === values[0]) {
-            checkbox.setAttribute('checked', 'checked');
-        } else {
-            checkbox.removeAttribute('checked');
-        }
-    }, [theme]);
-
-    const checkToggle = () => {
-        const [value_one, value_two] = values;
-        if (document.getElementById('switcher').checked) {
-            grabTheme(value_one);
-        } else {
-            grabTheme(value_two);
-        }
-    };
+        const switcher = document.getElementById('switcher');
+        setSwitcherDomElement(switcher);
+    }, []);
 
     useEffect(() => {
-        const checkbox = document.getElementById('switcher');
-        if (localStorage.getItem(keyName) === values[0]) {
-            checkbox.setAttribute('checked', true);
-        } else {
-            checkbox.removeAttribute('checked');
+        setSwitcherPosition();
+    }, [switcherDomElement]);
+
+    const setSwitcherPosition = () => {
+        if (switcherDomElement) {
+            if (getValueOfWhatToSwitch() === left_value) {
+                moveSwitcherLeft()
+            } else {
+                moveSwitcherRight()
+            }
         }
-    }, [keyName, values]);
+    }
+
+    const getValueOfWhatToSwitch = () => {
+        return localStorage.getItem(whatToSwitch);
+    }
+
+    const moveSwitcherRight = () => {
+        switcherDomElement.setAttribute('checked', 'checked');
+    }
+
+    const moveSwitcherLeft = () => {
+        switcherDomElement.removeAttribute('checked');
+    }
+
+    const changeSwitcherPosition = () => {
+        const currentVal = isSwitcherOnTheRight() ? right_value : left_value
+        setAndSendSwitchValue(currentVal);
+    }
+
+    const isSwitcherOnTheRight = () => {
+        return document.getElementById('switcher').checked
+    }
+
+    const setAndSendSwitchValue = (val) => {
+        sendFromSwitchToParent(val);
+        localStorage.setItem(whatToSwitch, val);
+    }
 
     return (
-        <label className="switch" theme={theme}>
-            <input id="switcher" type="checkbox" onClick={checkToggle} onChange={checkToggle} />
-            <span className="slider round"></span>
+        <label className='CSwitch' theme={theme}>
+            <input
+                id='switcher'
+                type='checkbox'
+                onClick={changeSwitcherPosition}
+                onChange={changeSwitcherPosition} />
+            <span className='slider'></span>
         </label>
     );
 };

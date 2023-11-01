@@ -31,9 +31,9 @@ function SignIn() {
   return (
     <div className="SignIn">
       <GearSVG />
-      <CInput type="name" func={handleNameChange} />
-      <CInput type="email" func={handleMailChange} />
-      <CInput type="password" func={handlePassChange} />
+      <CInput type="name" sendFromInputToParent={handleNameChange} />
+      <CInput type="email" sendFromInputToParent={handleMailChange} />
+      <CInput type="password" sendFromInputToParent={handlePassChange} />
       <CButton innerText="Submit" type="accent" onClick={handleSignIn} />
     </div>
   );

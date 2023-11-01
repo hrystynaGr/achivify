@@ -1,49 +1,59 @@
-import React, { useContext, useEffect, ReactComponent, useState } from 'react';
+import React, {
+    useContext,
+    useEffect,
+    ReactComponent,
+    useState
+} from 'react';
 
 import './c-pop-up.scss';
 import { AchivifyContext } from '../../MyContext';
 
 import { ReactComponent as CloseSVG } from '../../cross.svg'
 
-function CPopUp(props) {
+function CPopUp({ status, message, shouldDisplay, closeFunction }) {
     const { theme } = useContext(AchivifyContext);
-    const { status, message, display, callbackClose } = props;
-    const [popUpDOM, setPopUpDOM] = useState('');
+    const [popupDomElement, setPopupDomElement] = useState('');
 
     useEffect(() => {
-        setPopUpDOM(document.querySelector('.CPopUp'))
-        if (display && popUpDOM) {
-            animatePopUp(popUpDOM, '-100px', '0', 'flex');
+        const popUp = document.querySelector('.CPopUp');
+        setPopupDomElement(popUp);
+        if (popupDomElement) {
+            invokeApropriateAnimation();
         }
-        else if (popUpDOM) {
-            animatePopUp(popUpDOM, '0', '-100px', 'none');
-        }
-    }, [display])
+    }, [shouldDisplay])
 
-    const animatePopUp = (element, start, end, display) => {
-        if (display === 'flex') {
-            element.style.display = 'flex';
+    const invokeApropriateAnimation = () => {
+        if (shouldDisplay) {
+            popupAppear();
         }
         else {
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 1000)
-        }
-        if (element) {
-            element.animate([
-                {
-                    bottom: start,
-                },
-                {
-                    bottom: end,
-                },
-            ], {
-                duration: 1000,
-            });
+            popupFade();
         }
     }
+
+    const popupFade = () => {
+        animatePopup('0', '-100px');
+        setTimeout(() => {
+            popupDomElement.style.display = 'none';
+        }, 1000)
+    }
+
+    const popupAppear = () => {
+        popupDomElement.style.display = 'flex';
+        animatePopup('-100px', '0');
+    }
+
+    const animatePopup = (start, end) => {
+        popupDomElement.animate([
+            { bottom: start },
+            { bottom: end },
+        ], {
+            duration: 1000,
+        });
+    }
+
     return (<div className={`CPopUp ${status}`} theme={theme}>
-        <CloseSVG className="CloseSVG" onClick={callbackClose} />
+        <CloseSVG className='CloseSVG' onClick={closeFunction} />
         {message}
     </div>
     );

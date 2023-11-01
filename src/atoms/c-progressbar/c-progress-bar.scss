@@ -1,29 +1,29 @@
 @import '/src/styles/shared.scss';
 @import '/src/styles/breakpoints.scss';
 
-.CProgressbar {
+.CProgressBar {
     margin: var(--margin);
-}
 
-.whole-line {
-    position: relative;
-    width: 100%;
-    border-radius: var(--border-radius);
-    background-color: var(--secondary-color);
-    overflow: hidden;
-}
+    .whole-line {
+        position: relative;
+        width: 100%;
+        border-radius: var(--border-radius);
+        background-color: var(--secondary-color);
+        overflow: hidden;
 
-.done-line {
-    height: 2em;
-    background-color: var(--accent-color-0);
-    animation: progress .5s ease-out;
-}
+        .done-line {
+            height: 2em;
+            background-color: var(--accent-color-0);
+            animation: progress .5s ease-out;
+        }
 
-.percent {
-    position: absolute;
-    left: calc(50% - 17px);
-    top: .4em;
-    color: var(--secondary-text);
+        .percent {
+            position: absolute;
+            left: calc(50% - 17px);
+            top: .4em;
+            color: var(--secondary-text);
+        }
+    }
 }
 
 @media (max-width: $mobile) {

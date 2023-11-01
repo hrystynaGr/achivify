@@ -31,8 +31,8 @@ function Configs() {
   }, [userMilestones]);
 
   const isChecked = (milestoneId) => {
-    const [lvl, catg, quest] = milestoneId.split('_');
-    return userMilestones.find((el) => el[lvl])[lvl][catg]?.includes(+quest);
+    const [type, catg, quest] = milestoneId.split('_');
+    return userMilestones.find((el) => el[type])[type][catg]?.includes(+quest);
   };
 
   const checkboxesState = () => {
@@ -50,14 +50,14 @@ function Configs() {
 
   const onClick = (event) => {
     let upd;
-    const [lvl, catg, quest] = event.target.id.split('_');
+    const [type, catg, quest] = event.target.id.split('_');
     if (event.target.checked) {
-      userMilestones.find((el) => el[lvl])[lvl][catg].push(+quest)
+      userMilestones.find((el) => el[type])[type][catg].push(+quest)
       setUserMilestones(userMilestones);
       changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     } else {
-      upd = userMilestones.find((el) => el[lvl])[lvl][catg].filter((elem) => elem !== +quest);
-      userMilestones.find((el) => el[lvl])[lvl][catg] = [...upd];
+      upd = userMilestones.find((el) => el[type])[type][catg].filter((elem) => elem !== +quest);
+      userMilestones.find((el) => el[type])[type][catg] = [...upd];
       setUserMilestones(userMilestones);
       changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     }
@@ -74,8 +74,8 @@ function Configs() {
       <div className="list">
         {Object.values(milestones).map((milestone) => (
           <div key={milestone.name}>
-            <h2 className="lvl-name">{milestone.name}</h2>
-            <div className="lvl-wrap" key={milestone.name}>
+            <h2 className="type-name">{milestone.name}</h2>
+            <div className="type-wrap" key={milestone.name}>
               {Object.entries(milestone[milestone.name]).map(([key, value]) => (
                 <div key={key} className='category-container'>
                   <h4 className="catg-name">{key}</h4>
@@ -85,7 +85,7 @@ function Configs() {
                       type="checkbox"
                       label={e}
                       id={milestone.name + '_' + key + '_' + e}
-                      func={onClick}
+                      sendFromInputToParent={onClick}
                     />))}
                   </div>
                 </div>

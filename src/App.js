@@ -50,9 +50,9 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  const grabTheme = (selectedTheme) => {
+  const saveTheme = (selectedTheme) => {
     setTheme(selectedTheme);
-    localStorage.setItem('theme', selectedTheme);
+    // localStorage.setItem('theme', selectedTheme);
   };
 
   const logout = () => {
@@ -100,16 +100,16 @@ function App() {
       time = null;
       dashboard = null;
     }
-    const contextValues = { user: user, loggedIn: loggedIn, theme: theme, grabTheme: grabTheme };
+    const contextValues = { user: user, loggedIn: loggedIn, theme: theme};
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>
           <header className="header">
             <div className='switch-and-burger'>
               <CSwitch
-                keyName="theme"
-                values={['light', 'dark']}
-                grabTheme={grabTheme}
+                whatToSwitch="theme"
+                valuesToSwitch={['dark', 'light']}
+                sendFromSwitchToParent={saveTheme}
               />
               <BurgerMenuSVG
                 className={`burger ${(dashboard && configs && time) ? 'visible' : 'not-visible'}`}

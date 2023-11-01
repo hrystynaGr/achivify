@@ -9,7 +9,7 @@ function CButton({ type, onClick, innerText }) {
     return (
         <div className={`CButton ${type}`} theme={theme}>
             <button
-                type="button"
+                type='button'
                 className={`button ${type + '-inner'}`}
                 onClick={onClick}
             >

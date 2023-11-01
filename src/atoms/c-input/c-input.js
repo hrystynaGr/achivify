@@ -3,36 +3,35 @@ import React, { useContext, useState } from 'react';
 import './c-input.scss';
 import { AchivifyContext } from '../../MyContext';
 
-function CInput({ label, type, id, func }) {
+function CInput({ label, type, id, sendFromInputToParent }) {
     const { theme } = useContext(AchivifyContext);
-    const [messege, setMessege] = useState('');
+    const [inputValue, setInputValue] = useState('');
 
     const handleChange = (event) => {
         if (type !== 'checkbox') {
-            const newValue = event.target.value;
-            setMessege(newValue);
-            // Pass the updated value to the parent component's function
-            func(newValue);
+            const currentValue = event.target.value;
+            setInputValue(currentValue);
+            sendFromInputToParent(currentValue);
         }
     }
 
     const handleClick = (event) => {
         if (type === 'checkbox') {
-            // Pass the updated value to the parent component's function
-            func(event)
+            sendFromInputToParent(event);
         }
     }
 
     return (
-        <div className="CInput">
-            <label className={`label ${type}-label`} theme={theme}>{label || type}</label>
+        <div className='CInput'>
+            <label
+                className={`label ${type}-label`}
+                theme={theme}>{label || type}</label>
             <input
-                type={type}
                 id={id}
-                name={type}
-                value={messege}
-                onChange={handleChange}
                 className={type}
+                type={type}
+                value={inputValue}
+                onChange={handleChange}
                 onClick={handleClick}
             />
         </div>

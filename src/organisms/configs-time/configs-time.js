@@ -82,9 +82,9 @@ function ConfigsTime() {
         <div className="ConfigsTime" theme={theme}>
             <h2 className='confis-time-h2'>Hey {user.name}! How long did you study today &#128171; sunshine &#128171;?</h2>
             <p>Go on! Enter time in hours and minutes in hh:mm format and see your progress on dashboard!</p>
-            <CInput label='Time worked: ' type='time' id='time' func={handleTimeEnter} />
+            <CInput label='Time worked: ' type='time' id='time' sendFromInputToParent={handleTimeEnter} />
             <CButton onClick={submitTime} innerText='Submit' />
-            <CPopUp status={fetchState} message={popUpMessage} display={displayPopUp} callbackClose={handleClosePopUp} />
+            <CPopUp status={fetchState} message={popUpMessage} shouldDisplay={displayPopUp} closeFunction={handleClosePopUp} />
         </div>
     )
 }

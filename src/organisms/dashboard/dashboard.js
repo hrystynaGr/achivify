@@ -105,11 +105,11 @@ function Dashboard(props) {
   }, [usersMilestones])
 
 
-  function countScope(lvl, obj) {
+  function countScope(type, obj) {
     if (obj) {
-      const scope = obj?.find((el) => el[lvl])
+      const scope = obj?.find((el) => el[type])
       if (scope) {
-        return Object.values(scope[lvl]).reduce((acc, el) => acc + el.length, 0)
+        return Object.values(scope[type]).reduce((acc, el) => acc + el.length, 0)
       }
     }
   }
@@ -236,15 +236,15 @@ function Dashboard(props) {
         <h3 className="progress-title">{'Your progress on 300 JS questions:'}</h3>
         <div className="progress-wrap">
           <h4>Junior</h4>
-          <CProgressBar lvl={'junior'} doneFromScope={usersJuniorScope} allScope={juniorScope} />
+          <CProgressBar type={'junior'} progress={usersJuniorScope} scope={juniorScope} />
           <h4>Middle</h4>
-          <CProgressBar lvl={'middle'} doneFromScope={usersMiddleScope} allScope={middleScope} />
+          <CProgressBar type={'middle'} progress={usersMiddleScope} scope={middleScope} />
           <h4>Senior</h4>
-          <CProgressBar lvl={'senior'} doneFromScope={usersSeniorScope} allScope={seniorScope} />
+          <CProgressBar type={'senior'} progress={usersSeniorScope} scope={seniorScope} />
         </div >
         <h3 className="progress-title">{'Your progress on Clean Code Book:'}</h3>
         <div className="progress-wrap">
-          <CProgressBar lvl={'clean-code'} doneFromScope={usersCleanCodeScope} allScope={cleanCodeScope} />
+          <CProgressBar type={'clean-code'} progress={usersCleanCodeScope} scope={cleanCodeScope} />
         </div>
       </div>
     );

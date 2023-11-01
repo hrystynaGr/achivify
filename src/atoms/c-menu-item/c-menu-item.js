@@ -3,16 +3,21 @@ import React, { useContext } from 'react';
 import './c-menu-item.scss';
 import { AchivifyContext } from '../../MyContext';
 
-function CMenuItem(props) {
+function CMenuItem({ innerText, link }) {
     const { theme } = useContext(AchivifyContext);
-    const { innerText, link } = props;
 
-    function isActive() {
+    const isActive = () => {
         return link === window.location.pathname
     }
 
+    const formClassName = () => {
+        return isActive() ? 'active' : ''
+    }
+
     return (
-        <div className={`CMenuItem ${isActive() ? 'active' : ''}`} theme={theme} >
+        <div
+            className={`CMenuItem ${formClassName()}`}
+            theme={theme} >
             <a href={link}>{innerText}</a>
         </div>
     );

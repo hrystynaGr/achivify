@@ -34,7 +34,7 @@ p {
     grid-column-gap: 2em;
 }
 
-.lvl-name {
+.type-name {
     margin-top: 2em;
     color: var(--accent-color-0);
     text-transform: capitalize;
@@ -45,7 +45,7 @@ p {
     text-transform: capitalize;
 }
 
-.lvl-wrap {
+.type-wrap {
     padding: var(--margin);
     @include border(var(--secondary-color));
 }

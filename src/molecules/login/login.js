@@ -28,8 +28,8 @@ function Login() {
   return (
     <div className="Login" theme={theme}>
       <GearSVG />
-      <CInput type="email" func={handleMailChange} />
-      <CInput type="password" func={handlePassChange} />
+      <CInput type="email" sendFromInputToParent={handleMailChange} />
+      <CInput type="password" sendFromInputToParent={handlePassChange} />
       <CButton innerText="Submit" type="accent" onClick={loggingIn} />
     </div>
   );
