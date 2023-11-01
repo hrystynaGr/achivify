@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import './login.scss';
 import { AchivifyContext } from '../../MyContext';
-import { logIn } from '../../helpers/user';
+import { logIn } from '../../helpers/user/log-in';
 
 import { ReactComponent as GearSVG } from '../../gear.svg'
 import CInput from '../../atoms/c-input/c-input';

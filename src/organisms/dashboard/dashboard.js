@@ -7,7 +7,8 @@ import { Bar } from 'react-chartjs-2';
 import './dashboard.scss';
 import { AchivifyContext } from '../../MyContext';
 import { milestonesLoad } from '../../helpers/milestones';
-import { loadUsersTimeStudied, loadUsersMilestones } from '../../helpers/user';
+import { loadUsersTimeStudied } from '../../helpers/user';
+import { loadUsersMilestones } from '../../helpers/user/milestones';
 import {
   parseTimeToMinutes,
   dayFromDate,

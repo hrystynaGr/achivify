@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './configs.scss';
 import { AchivifyContext } from '../../MyContext';
 import { milestonesLoad } from '../../helpers/milestones';
-import { loadUsersMilestones, changeUserMilestones } from '../../helpers/user';
+import { loadUsersMilestones, changeUsersMilestones } from '../../helpers/user/milestones';
 
 import CInput from '../../atoms/c-input/c-input';
 
@@ -54,12 +54,12 @@ function Configs() {
     if (event.target.checked) {
       userMilestones.find((el) => el[type])[type][catg].push(+quest)
       setUserMilestones(userMilestones);
-      changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
+      changeUsersMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     } else {
       upd = userMilestones.find((el) => el[type])[type][catg].filter((elem) => elem !== +quest);
       userMilestones.find((el) => el[type])[type][catg] = [...upd];
       setUserMilestones(userMilestones);
-      changeUserMilestones({ userMilestones: userMilestones, userMilestonesId, user });
+      changeUsersMilestones({ userMilestones: userMilestones, userMilestonesId, user });
     }
   };
 

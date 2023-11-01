@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './sign-in.scss';
-import { signIn } from '../../helpers/user';
+import { signIn } from '../../helpers/user/sign-in';
 
 import CInput from '../../atoms/c-input/c-input';
 import CButton from '../../atoms/c-button/c-button';

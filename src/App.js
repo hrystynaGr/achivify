@@ -10,9 +10,9 @@ import './App.scss';
 import { AchivifyContext } from './MyContext';
 import {
   userLoad,
-  isLoggedIn,
   logOut
 } from './helpers/user'
+import { isLoggedIn } from './helpers/user/log-in'
 import { isObjEmpty } from './helpers/shared';
 
 import Login from './molecules/login/login';
@@ -40,12 +40,13 @@ function App() {
     };
     fetchData();
     const handleStorageChange = () => {
+      console.log("Event catched")
       window.location.href = '/dashboard';
     };
-    window.addEventListener('newUser', handleStorageChange);
+    window.addEventListener('logIn', handleStorageChange);
 
     return () => {
-      window.removeEventListener('newUser', handleStorageChange);
+      window.removeEventListener('logIn', handleStorageChange);
     };
     // eslint-disable-next-line
   }, []);
@@ -100,7 +101,7 @@ function App() {
       time = null;
       dashboard = null;
     }
-    const contextValues = { user: user, loggedIn: loggedIn, theme: theme};
+    const contextValues = { user: user, loggedIn: loggedIn, theme: theme };
     return (
       <AchivifyContext.Provider value={contextValues}>
         <div className="App" theme={theme}>
