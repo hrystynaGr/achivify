@@ -423,7 +423,10 @@
             ],
             "functions": [
               31,
-              32
+              32,
+              33,
+              34,
+              35
             ],
             "front-end": [],
             "layout": [],
@@ -792,7 +795,35 @@
         },
         {
           "date": "01/11/2023",
-          "hoursStudied": "03:03"
+          "hoursStudied": "06:34"
+        },
+        {
+          "date": "02/11/2023",
+          "hoursStudied": "02:56"
+        },
+        {
+          "date": "05/12/2023",
+          "hoursStudied": "03:25"
+        },
+        {
+          "date": "06/12/2023",
+          "hoursStudied": "03:25"
+        },
+        {
+          "date": "07/12/2023",
+          "hoursStudied": "02:25"
+        },
+        {
+          "date": "09/12/2023",
+          "hoursStudied": "01:45"
+        },
+        {
+          "date": "01/12/2023",
+          "hoursStudied": "02:00"
+        },
+        {
+          "date": "18/12/2023",
+          "hoursStudied": "03:25"
         }
       ],
       "id": 6
