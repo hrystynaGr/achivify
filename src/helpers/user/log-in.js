@@ -24,6 +24,7 @@ export const isLoggedIn = async () => {
 }
 
 async function fetchUserData(inputValues) {
+    console.log('fetchUserData')
     const fetcgUrl = `${configs.local_api}/users?email=${inputValues.email}&password=${inputValues.password}`
     const response = await fetch(fetcgUrl);
     const fetchedData = await response.json();

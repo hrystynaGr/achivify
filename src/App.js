@@ -145,7 +145,7 @@ function App() {
             </BrowserRouter>
           </div>
           <footer>
-            <div>{'Year 2023'}</div>
+            <div>{'Year 2025'}</div>
             <div>{'(c) Achivify app!'}</div>
           </footer>
         </div>
