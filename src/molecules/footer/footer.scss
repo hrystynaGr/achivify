@@ -1,0 +1,20 @@
+@import '/src/styles/shared.scss';
+@import '/src/styles/breakpoints.scss';
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--margin);
+    margin: 0;
+    border-top: 1px solid var(--primary-color-hue);
+    background-color: var(--primary-color-0);
+    color: var(--primary-text-hue);
+    opacity: 0.8;
+  }
+
+@media (max-width: $mobile) {
+    footer {
+    padding: var(--margin);
+    }
+}
+  

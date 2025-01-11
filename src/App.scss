@@ -59,17 +59,6 @@
   }
 }
 
-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--margin);
-  margin: 0;
-  border-top: 1px solid var(--primary-color-hue);
-  background-color: var(--primary-color-0);
-  color: var(--primary-text-hue);
-  opacity: 0.8;
-}
-
 @media (max-width: $mobile) {
   .App {
     .header {
@@ -114,10 +103,6 @@ footer {
         flex-direction: column;
         background-color: var(--primary-color-0);
       }
-    }
-
-    footer {
-      padding: var(--margin);
     }
   }
 }
